@@ -518,56 +518,56 @@ export default function App() {
                 className="w-full"
               >
                 <SwiperSlide>
-                  <div className="flex justify-center transition-transform duration-300 hover:scale-110">
-                    <img src={tcs} alt="TCS" className="h-20 w-auto" />
+                  <div className="logo-box">
+                    <img src={tcs} alt="TCS" />
                   </div>
                 </SwiperSlide>
 
                 <SwiperSlide>
-                  <div className="flex justify-center transition-transform duration-300 hover:scale-110">
-                    <img src={hdfc} alt="HDFC" className="h-20 w-auto" />
+                  <div className="logo-box">
+                    <img src={hdfc} alt="HDFC"/>
                   </div>
                 </SwiperSlide>
 
                 <SwiperSlide>
-                  <div className="flex justify-center transition-transform duration-300 hover:scale-110">
-                    <img src={infosys} alt="Infosys" className="h-20 w-auto" />
+                  <div className="logo-box">
+                    <img src={infosys} alt="Infosys" />
                   </div>
                 </SwiperSlide>
 
                 <SwiperSlide>
-                  <div className="flex justify-center transition-transform duration-300 hover:scale-110">
-                    <img src={bajaj} alt="Bajaj" className="h-20 w-auto" />
+                  <div className="logo-box">
+                    <img src={bajaj} alt="Bajaj" />
                   </div>
                 </SwiperSlide>
 
                 <SwiperSlide>
-                  <div className="flex justify-center transition-transform duration-300 hover:scale-110">
-                    <img src={swiggy} alt="Swiggy" className="h-20 w-auto" />
+                  <div className="logo-box">
+                    <img src={swiggy} alt="Swiggy"  />
                   </div>
                 </SwiperSlide>
 
                 <SwiperSlide>
-                  <div className="flex justify-center transition-transform duration-300 hover:scale-110">
-                    <img src={phonepe} alt="PhonePe" className="h-20 w-auto" />
+                  <div className="logo-box">
+                    <img src={phonepe} alt="PhonePe"/>
                   </div>
                 </SwiperSlide>
 
                 <SwiperSlide>
-                  <div className="flex justify-center transition-transform duration-300 hover:scale-110">
-                    <img src={makemytrip} alt="MakeMyTrip" className="h-20 w-auto" />
+                  <div className="logo-box">
+                    <img src={makemytrip} alt="MakeMyTrip"  />
                   </div>
                 </SwiperSlide>
 
                 <SwiperSlide>
-                  <div className="flex justify-center transition-transform duration-300 hover:scale-110">
-                    <img src={policy} alt="PolicyBazaar" className="h-20 w-auto" />
+                  <div className="logo-box">
+                    <img src={policy} alt="PolicyBazaar"  />
                   </div>
                 </SwiperSlide>
 
                 <SwiperSlide>
-                  <div className="flex justify-center transition-transform duration-300 hover:scale-110">
-                    <img src={nykaa} alt="Nykaa" className="h-20 w-auto" />
+                  <div className="logo-box">
+                    <img src={nykaa} alt="Nykaa"  />
                   </div>
                 </SwiperSlide>
               </Swiper>
@@ -717,27 +717,6 @@ export default function App() {
                     </div>
                     <h3 className="text-base font-extrabold text-black mb-2">Outbound Campaigns</h3>
                     <p className="text-[11px] text-gray-400 font-bold">Automated payment links, renewals, and EMI feedback followups.</p>
-                  </div>
-                </div>
-              </ScrollReveal>
-
-              {/* Box 4: Compliant & Carrier-Grade */}
-              <ScrollReveal delay={250}>
-                <div className="relative overflow-hidden md:col-span-2 rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 flex flex-col justify-between hover:border-black/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 group shadow-sm">
-                  <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-black/[0.02] -left-1/4 group-hover:animate-shine pointer-events-none" />
-                  <div>
-                    <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:bg-[#FFB000]/20">
-                      <ShieldCheck className="w-5 h-5 text-black" />
-                    </div>
-                    <h3 className="text-lg font-extrabold text-black mb-2">TRAI & DPDP Compliance</h3>
-                    <p className="text-xs text-gray-500 font-bold leading-relaxed">
-                      Enforces calling windows (9 AM–9 PM), scrubs DND registries, and stores data securely inside Indian circular networks.
-                    </p>
-                  </div>
-                  <div className="grid grid-cols-3 gap-4 border-t border-gray-100 pt-4 mt-6 text-[9px] font-extrabold text-gray-600 uppercase tracking-widest">
-                    <span className="flex items-center gap-1 hover:scale-105 transition-transform"><Lock className="w-3.5 h-3.5 text-[#FFB000]" /> DPDP Lock</span>
-                    <span className="flex items-center gap-1 hover:scale-105 transition-transform"><Clock className="w-3.5 h-3.5 text-[#FFB000]" /> 9AM - 9PM</span>
-                    <span className="flex items-center gap-1 hover:scale-105 transition-transform"><ShieldCheck className="w-3.5 h-3.5 text-[#FFB000]" /> DNC Scrub</span>
                   </div>
                 </div>
               </ScrollReveal>
