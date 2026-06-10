@@ -1,27 +1,29 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { 
-  Phone, 
-  Volume2, 
-  Play, 
-  Pause, 
-  Layers, 
-  Sparkles, 
-  TrendingUp, 
-  ShieldCheck, 
-  Zap, 
-  Clock, 
-  Languages, 
-  CheckCircle2, 
-  ChevronRight, 
-  ArrowRight, 
-  Cpu, 
-  Database, 
-  Sliders, 
-  X, 
+import {
+  Phone,
+  Volume2,
+  Play,
+  Pause,
+  Layers,
+  Sparkles,
+  TrendingUp,
+  ShieldCheck,
+  Zap,
+  Clock,
+  Languages,
+  CheckCircle2,
+  ChevronRight,
+  ArrowRight,
+  Cpu,
+  Database,
+  Sliders,
+  X,
   MessageSquare,
   Lock,
   Headphones
 } from 'lucide-react';
+
+
 
 import tcs from '../src/assets/tcs.png';
 import hdfc from '../src/assets/hdfc.png';
@@ -33,6 +35,11 @@ import phonepe from '../src/assets/phonepe.png';
 import policy from '../src/assets/policy.png';
 import nykaa from '../src/assets/nykaa.svg';
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+
+import "swiper/css";
+import '../src/styles.css'
 
 
 // Highly polished, authentic inline SVG vector approximations of the 12 specified brands
@@ -186,9 +193,8 @@ function ScrollReveal({ children, delay = 0 }) {
   return (
     <div
       ref={elementRef}
-      className={`transition-all duration-1000 cubic-bezier(0.16, 1, 0.3, 1) transform ${
-        isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-[0.99]'
-      }`}
+      className={`transition-all duration-1000 cubic-bezier(0.16, 1, 0.3, 1) transform ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-[0.99]'
+        }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
@@ -212,7 +218,7 @@ export default function App() {
   const startSimulation = () => {
     setIsSimulating(true);
     setSimulatedTranscripts([]);
-    
+
     if (simulationIntervalRef.current) clearInterval(simulationIntervalRef.current);
 
     const dialogues = simulatorDialogues[activeTab] || [];
@@ -259,976 +265,939 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-[#0A0A0A] font-sans antialiased selection:bg-[#FFB000] selection:text-black">
-      
-      {/* Dynamic ambient glowing circles */}
-      <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-[#FFB000]/10 rounded-full filter blur-[100px] pointer-events-none animate-pulse duration-[8000ms]" />
-      <div className="absolute top-[800px] right-1/4 w-[500px] h-[500px] bg-orange-400/5 rounded-full filter blur-[120px] pointer-events-none" />
-      
-      {/* Header / Navbar */}
-      <nav className="sticky top-0 z-50 backdrop-blur-xl bg-white/85 border-b border-black/[0.04] transition-all duration-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <div className="flex items-center gap-3 group cursor-pointer">
-              <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-black to-gray-700 p-[1.5px] shadow-md transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
-                <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center">
-                  <Phone className="w-5 h-5 text-black" />
-                </div>
-                <span className="absolute -top-1.5 -right-1.5 flex h-3.5 w-3.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-[#FFB000] border border-white"></span>
-                </span>
-              </div>
-              <div>
-                <span className="text-xl font-extrabold tracking-tight text-black">
-                  Demo<span className="text-[#FFB000] transition-colors duration-300 group-hover:text-black">.io</span>
-                </span>
-                <span className="block text-[9px] text-[#FFB000] tracking-[0.2em] font-bold uppercase transition-all duration-300 group-hover:translate-x-1">Audio-Native AI</span>
-              </div>
-            </div>
+    <>
+      <div className="min-h-screen bg-white text-[#0A0A0A] font-sans antialiased selection:bg-[#FFB000] selection:text-black">
 
-            {/* Nav Links */}
-            <div className="hidden md:flex items-center gap-8">
-              {['how-it-works', 'capabilities', 'pricing', 'comparison'].map((link) => (
-                <a 
-                  key={link}
-                  href={`#${link}`} 
-                  className="relative text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-black transition-all duration-300 hover:scale-105 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#FFB000] after:transition-all after:duration-300 hover:after:w-full"
-                >
-                  {link.replace('-', ' ')}
-                </a>
-              ))}
-            </div>
+        {/* Dynamic ambient glowing circles */}
+        <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-[#FFB000]/10 rounded-full filter blur-[100px] pointer-events-none animate-pulse duration-[8000ms]" />
+        <div className="absolute top-[800px] right-1/4 w-[500px] h-[500px] bg-orange-400/5 rounded-full filter blur-[120px] pointer-events-none" />
 
-            {/* Header Right Action */}
-            <div className="flex items-center gap-4">
-              <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/[0.04] border border-black/[0.06] transform hover:scale-105 transition-all duration-300">
-                <span className="w-2 h-2 rounded-full bg-[#FFB000] animate-pulse" />
-                <span className="text-[10px] text-gray-700 font-bold uppercase tracking-wider">94ms Live Call Latency</span>
-              </div>
-              <button 
-                onClick={() => setIsDemoModalOpen(true)}
-                className="relative group overflow-hidden px-5 py-2.5 rounded-xl bg-black text-white font-bold text-xs uppercase tracking-wider transition-all duration-500 hover:bg-[#FFB000] hover:text-black active:scale-95 shadow-md hover:shadow-orange-500/10"
-              >
-                <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-white/20 -left-1/4 group-hover:animate-shine pointer-events-none" />
-                <span className="relative z-10">Book Free Demo</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      {/* Hero Section */}
-      <section className="relative pt-12 pb-20 md:pt-16 md:pb-24 overflow-hidden bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            {/* Left Hero: Value Proposition */}
-            <div className="lg:col-span-7 space-y-8 text-left animate-fade-in-up">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFB000]/10 border border-[#FFB000]/30 text-[10px] font-bold text-black uppercase tracking-wider animate-float">
-                <Sparkles className="w-3.5 h-3.5 text-[#FFB000] animate-spin-slow" />
-                <span>India-First Conversational Voice AI Platform</span>
-              </div>
-
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-none text-black">
-                AI Voice Agents That <br/>
-                <span className="bg-gradient-to-r from-black via-[#FFB000] to-black bg-clip-text text-transparent">
-                  Actually Sound Human
-                </span>
-              </h1>
-
-              <p className="text-gray-600 text-base max-w-xl leading-relaxed">
-                Run seamless telephone conversations in <span className="text-black font-extrabold border-b-2 border-[#FFB000]">15+ Indian languages</span> with ultra-low <span className="text-black font-extrabold">94ms live latency</span>.
-              </p>
-
-              {/* Quick Specs Bullet List */}
-              <div className="grid grid-cols-2 gap-4 max-w-lg pt-2">
-                {[
-                  'Automatic Dialect Detection',
-                  'Carrier-grade Indian PSTN',
-                  'TRAI & DPDP Compliant',
-                  'Per-Second Billing'
-                ].map((spec, index) => (
-                  <div key={index} className="flex items-center gap-2.5 hover:translate-x-1.5 transition-all duration-300 cursor-default">
-                    <CheckCircle2 className="w-4 h-4 text-[#FFB000] transition-transform duration-300 hover:scale-125" />
-                    <span className="text-xs text-gray-700 font-bold uppercase tracking-wider">{spec}</span>
+        {/* Header / Navbar */}
+        <nav className="sticky top-0 z-50 backdrop-blur-xl bg-white/85 border-b border-black/[0.04] transition-all duration-500">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-20">
+              {/* Logo */}
+              <div className="flex items-center gap-3 group cursor-pointer">
+                <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-black to-gray-700 p-[1.5px] shadow-md transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
+                  <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center">
+                    <Phone className="w-5 h-5 text-black" />
                   </div>
+                  <span className="absolute -top-1.5 -right-1.5 flex h-3.5 w-3.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-[#FFB000] border border-white"></span>
+                  </span>
+                </div>
+                <div>
+                  <span className="text-xl font-extrabold tracking-tight text-black">
+                    Demo<span className="text-[#FFB000] transition-colors duration-300 group-hover:text-black">.io</span>
+                  </span>
+                  <span className="block text-[9px] text-[#FFB000] tracking-[0.2em] font-bold uppercase transition-all duration-300 group-hover:translate-x-1">Audio-Native AI</span>
+                </div>
+              </div>
+
+              {/* Nav Links */}
+              <div className="hidden md:flex items-center gap-8">
+                {['how-it-works', 'capabilities', 'pricing', 'comparison'].map((link) => (
+                  <a
+                    key={link}
+                    href={`#${link}`}
+                    className="relative text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-black transition-all duration-300 hover:scale-105 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#FFB000] after:transition-all after:duration-300 hover:after:w-full"
+                  >
+                    {link.replace('-', ' ')}
+                  </a>
                 ))}
               </div>
 
-              {/* CTA Blocks */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <button 
+              {/* Header Right Action */}
+              <div className="flex items-center gap-4">
+                <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/[0.04] border border-black/[0.06] transform hover:scale-105 transition-all duration-300">
+                  <span className="w-2 h-2 rounded-full bg-[#FFB000] animate-pulse" />
+                  <span className="text-[10px] text-gray-700 font-bold uppercase tracking-wider">94ms Live Call Latency</span>
+                </div>
+                <button
                   onClick={() => setIsDemoModalOpen(true)}
-                  className="relative flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-black text-white font-bold hover:bg-[#FFB000] hover:text-black transition-all duration-500 hover:shadow-lg hover:scale-105 active:scale-95 group overflow-hidden"
+                  className="relative group overflow-hidden px-5 py-2.5 rounded-xl bg-black text-white font-bold text-xs uppercase tracking-wider transition-all duration-500 hover:bg-[#FFB000] hover:text-black active:scale-95 shadow-md hover:shadow-orange-500/10"
                 >
-                  <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-white/10 -left-1/4 group-hover:animate-shine pointer-events-none" />
-                  <span className="text-xs uppercase tracking-wider">Build Your Voice Agent</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
+                  <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-white/20 -left-1/4 group-hover:animate-shine pointer-events-none" />
+                  <span className="relative z-10">Book Free Demo</span>
                 </button>
-                <a 
-                  href="#live-sandbox"
-                  className="flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gray-50 border border-black/[0.08] hover:bg-gray-100 transition-all duration-300 font-bold text-xs uppercase tracking-wider text-black hover:scale-105 active:scale-95"
-                >
-                  <Volume2 className="w-4 h-4 text-[#FFB000] animate-pulse" />
-                  <span>Test Live Audio Demo</span>
-                </a>
               </div>
             </div>
+          </div>
+        </nav>
 
-            {/* Right Hero: Live Telephone & Waveform Sandbox */}
-            <div id="live-sandbox" className="lg:col-span-5 relative group">
-              <div className="absolute -inset-1.5 bg-gradient-to-r from-[#FFB000] to-orange-400 rounded-3xl blur opacity-15 group-hover:opacity-30 transition duration-1000 group-hover:duration-300" />
-              
-              <div className="relative rounded-3xl border border-black/[0.08] bg-[#FDFDFD] p-6 sm:p-8 shadow-[0_10px_40px_rgba(0,0,0,0.04)] transition-all duration-500 ease-out hover:shadow-[0_15px_50px_rgba(255,176,0,0.08)]">
-                
-                {/* Header of Sandbox */}
-                <div className="flex items-center justify-between pb-4 border-b border-black/[0.06]">
-                  <div className="flex items-center gap-3">
-                    <div className="relative w-3 h-3">
-                      <span className="absolute inset-0 rounded-full bg-black animate-ping" />
-                      <span className="absolute inset-0.5 rounded-full bg-black" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-wider text-black">Interactive Sandbox</p>
-                      <p className="text-[10px] text-gray-400 font-bold">Turn-taking latency tester</p>
-                    </div>
-                  </div>
-                  <div className="px-2.5 py-1 rounded-md bg-[#FFB000]/10 border border-[#FFB000]/30 text-[9px] font-bold text-black uppercase tracking-wider animate-pulse">
-                    Target: 94ms
-                  </div>
+        {/* Hero Section */}
+        <section className="relative pt-12 pb-20 md:pt-16 md:pb-24 overflow-hidden bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+              {/* Left Hero: Value Proposition */}
+              <div className="lg:col-span-7 space-y-8 text-left animate-fade-in-up">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFB000]/10 border border-[#FFB000]/30 text-[10px] font-bold text-black uppercase tracking-wider animate-float">
+                  <Sparkles className="w-3.5 h-3.5 text-[#FFB000] animate-spin-slow" />
+                  <span>India-First Conversational Voice AI Platform</span>
                 </div>
 
-                {/* Simulated Persona selector tabs */}
-                <div className="mt-6">
-                  <label className="text-[9px] uppercase tracking-wider text-gray-400 font-extrabold block mb-2">Select Agent Persona</label>
-                  <div className="grid grid-cols-3 gap-2">
-                    {['receptionist', 'emi', 'support'].map((tab) => (
-                      <button
-                        key={tab}
-                        onClick={() => { setActiveTab(tab); stopSimulation(); }}
-                        className={`py-2 px-1 text-[10px] uppercase tracking-wider font-extrabold rounded-lg border transition-all duration-500 transform ${
-                          activeTab === tab 
-                            ? 'bg-black text-white border-black scale-105 shadow-md' 
-                            : 'bg-black/[0.01] text-gray-500 border-black/[0.06] hover:bg-black/[0.04] hover:scale-[1.02]'
-                        }`}
-                      >
-                        {tab === 'receptionist' ? 'Receptionist' : tab === 'emi' ? 'EMI agent' : 'D2C Support'}
-                      </button>
-                    ))}
-                  </div>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-none text-black">
+                  AI Voice Agents That <br />
+                  <span className="bg-gradient-to-r from-black via-[#FFB000] to-black bg-clip-text text-transparent">
+                    Actually Sound Human
+                  </span>
+                </h1>
+
+                <p className="text-gray-600 text-base max-w-xl leading-relaxed">
+                  Run seamless telephone conversations in <span className="text-black font-extrabold border-b-2 border-[#FFB000]">15+ Indian languages</span> with ultra-low <span className="text-black font-extrabold">94ms live latency</span>.
+                </p>
+
+                {/* Quick Specs Bullet List */}
+                <div className="grid grid-cols-2 gap-4 max-w-lg pt-2">
+                  {[
+                    'Automatic Dialect Detection',
+                    'Carrier-grade Indian PSTN',
+                    'TRAI & DPDP Compliant',
+                    'Per-Second Billing'
+                  ].map((spec, index) => (
+                    <div key={index} className="flex items-center gap-2.5 hover:translate-x-1.5 transition-all duration-300 cursor-default">
+                      <CheckCircle2 className="w-4 h-4 text-[#FFB000] transition-transform duration-300 hover:scale-125" />
+                      <span className="text-xs text-gray-700 font-bold uppercase tracking-wider">{spec}</span>
+                    </div>
+                  ))}
                 </div>
 
-                {/* Language Selector */}
-                <div className="mt-4">
-                  <label className="text-[9px] uppercase tracking-wider text-gray-400 font-extrabold block mb-2">Select Accent</label>
-                  <select 
-                    value={selectedLanguage} 
-                    onChange={(e) => setSelectedLanguage(e.target.value)}
-                    className="w-full bg-gray-50 border border-black/[0.08] rounded-xl px-3 py-2 text-xs text-black font-semibold focus:outline-none focus:border-black transition-all duration-300"
+                {/* CTA Blocks */}
+                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                  <button
+                    onClick={() => setIsDemoModalOpen(true)}
+                    className="relative flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-black text-white font-bold hover:bg-[#FFB000] hover:text-black transition-all duration-500 hover:shadow-lg hover:scale-105 active:scale-95 group overflow-hidden"
                   >
-                    {languages.map(lang => (
-                      <option key={lang.code} value={lang.code}>
-                        {lang.name} ({lang.native})
-                      </option>
-                    ))}
-                  </select>
+                    <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-white/10 -left-1/4 group-hover:animate-shine pointer-events-none" />
+                    <span className="text-xs uppercase tracking-wider">Build Your Voice Agent</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
+                  </button>
+                  <a
+                    href="#live-sandbox"
+                    className="flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gray-50 border border-black/[0.08] hover:bg-gray-100 transition-all duration-300 font-bold text-xs uppercase tracking-wider text-black hover:scale-105 active:scale-95"
+                  >
+                    <Volume2 className="w-4 h-4 text-[#FFB000] animate-pulse" />
+                    <span>Test Live Audio Demo</span>
+                  </a>
                 </div>
+              </div>
 
-                {/* Waveform Visualization area */}
-                <div className="my-6 p-4 rounded-xl bg-gray-50 border border-black/[0.06] flex flex-col justify-center items-center h-28 relative overflow-hidden transition-all duration-300">
-                  {isSimulating ? (
-                    <div className="flex items-center gap-1.5 h-16">
-                      {Array.from({ length: 18 }).map((_, i) => (
-                        <div 
-                          key={i} 
-                          className="w-[3px] bg-gradient-to-t from-[#FFB000] to-black rounded-full animate-wave"
+              {/* Right Hero: Live Telephone & Waveform Sandbox */}
+              <div id="live-sandbox" className="lg:col-span-5 relative group">
+                <div className="absolute -inset-1.5 bg-gradient-to-r from-[#FFB000] to-orange-400 rounded-3xl blur opacity-15 group-hover:opacity-30 transition duration-1000 group-hover:duration-300" />
+
+                <div className="relative rounded-3xl">
+
+                  {/* Header of Sandbox */}
+                  {/* <div className="flex items-center justify-between pb-4 border-b border-black/[0.06]"></div> */}
+                  {/* Audio Player Bar */}
+                  <div className="w-full mb-6 flex items-center gap-4 bg-gradient-to-r from-[#FFB000] bg-[#FDFDFD] to-orange-400 rounded-2xl border border-[#FFB000] bg-[#FFB000] px-5 py-7">
+
+                    {/* Play Button */}
+                    <button
+                      onClick={() => setIsSimulating(!isSimulating)}
+                      className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-[#fff] cursor-pointer"
+                    >
+                      {isSimulating ? (
+                        <span className="flex gap-[3px]">
+                          <span className="h-4 w-1 rounded-sm bg-black" />
+                          <span className="h-4 w-1 rounded-sm bg-black" />
+                        </span>
+                      ) : (
+                        <span
+                          className="ml-[3px]"
                           style={{
-                            height: `${Math.floor(Math.random() * 50) + 12}px`,
-                            animationDelay: `${i * 0.06}s`
+                            width: 0,
+                            height: 0,
+                            borderStyle: "solid",
+                            borderWidth: "8px 0 8px 14px",
+                            borderColor: "transparent transparent transparent #000000",
                           }}
                         />
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="text-center space-y-1 group-hover:scale-105 transition-transform duration-300">
-                      <Volume2 className="w-7 h-7 mx-auto text-gray-300 animate-pulse" />
-                      <p className="text-[10px] uppercase tracking-wider text-gray-400 font-bold">Simulator ready to connect</p>
-                    </div>
-                  )}
+                      )}
+                    </button>
 
-                  {isSimulating && (
-                    <div className="absolute top-2 right-2 bg-black text-white rounded px-2.5 py-0.5 text-[8px] font-bold tracking-widest uppercase animate-pulse">
-                      ⚡ LATENCY: 94ms
-                    </div>
-                  )}
-                </div>
+                    {/* Center: Label + Waveform */}
+                    <div className="flex min-w-0 flex-1 flex-col gap-2">
 
-                {/* Conversation Output / Transcript Sim */}
-                <div className="space-y-3 max-h-44 overflow-y-auto mb-6 pr-2 scrollbar-thin">
-                  {simulatedTranscripts.length === 0 ? (
-                    <div className="text-center py-6 text-gray-400 text-xs italic font-semibold">
-                      Click "Initiate Simulated Call" button below to start conversation.
-                    </div>
-                  ) : (
-                    simulatedTranscripts.map((dialogue, index) => (
-                      <div 
-                        key={index}
-                        className={`flex flex-col max-w-[90%] transition-all duration-500 ease-out transform translate-y-0 scale-100 ${
-                          dialogue.speaker === 'caller' ? 'mr-auto items-start' : 'ml-auto items-end'
-                        }`}
-                      >
-                        <span className="text-[8px] uppercase tracking-wider text-gray-400 font-bold mb-1">
-                          {dialogue.speaker === 'caller' ? 'Caller' : 'Voice Agent'}
-                        </span>
-                        <div 
-                          className={`rounded-2xl p-3 text-xs leading-relaxed transition-all duration-300 ${
-                            dialogue.speaker === 'caller'
-                              ? 'bg-gray-100 border border-gray-200 text-gray-800'
-                              : 'bg-black text-white font-medium shadow-sm hover:scale-[1.02]'
-                          }`}
-                        >
-                          {dialogue.text}
-                        </div>
-                        {dialogue.highlight && (
-                          <span className="text-[8px] text-orange-500 font-bold mt-1 tracking-wider uppercase animate-pulse">
-                            ⚡processed in {dialogue.time}
-                          </span>
-                        )}
+                      {/* Label */}
+                      <div className="flex mb-3 items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#ffff] ">
+                        <span className="h-[7px] w-[7px] flex-shrink-0 rounded-full bg-[#ffff] animate-pulse " />
+                        Hear our agent in action
                       </div>
-                    ))
-                  )}
-                </div>
 
-                {/* Sandbox CTA Controller */}
-                <div>
-                  {!isSimulating ? (
-                    <button
-                      onClick={startSimulation}
-                      className="relative overflow-hidden w-full py-3.5 rounded-xl bg-black text-white hover:bg-[#FFB000] hover:text-black font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all duration-500 hover:scale-[1.02] group/btn"
-                    >
-                      <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-white/20 -left-1/4 group-hover/btn:animate-shine pointer-events-none" />
-                      <Phone className="w-4 h-4 fill-current animate-pulse" />
-                      <span>Initiate Simulated Call</span>
-                    </button>
-                  ) : (
-                    <button
-                      onClick={stopSimulation}
-                      className="w-full py-3.5 rounded-xl bg-red-50 border border-red-100 hover:bg-red-100 text-red-600 font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[0.98]"
-                    >
-                      <Pause className="w-4 h-4 animate-spin-slow" />
-                      <span>Disconnect Call</span>
-                    </button>
-                  )}
-                </div>
-              </div>
-            </div>
+                      <div className="flex items-center gap-2">
 
-          </div>
-        </div>
-      </section>
+                        {/* Waveform Bars */}
+                        <div className="flex h-8 flex-1 items-center gap-[2px]">
+                          {Array.from({ length: 48 }).map((_, i) => {
+                            const heights = [
+                              12, 18, 28, 38, 50, 44, 32, 22,
+                              36, 52, 60, 48, 34, 26, 40, 56,
+                              62, 50, 38, 28, 42, 58, 64, 52,
+                              40, 30, 44, 60, 66, 54, 42, 32,
+                              46, 62, 56, 44, 34, 24, 38, 54,
+                              60, 46, 36, 26, 40, 52, 32, 16
+                            ];
 
-      {/* Trusted By Loop - Seamless Continuous Animation with exact Brand SVGs (12 Brands duplicated for endless loop) */}
-      <section className="py-12 bg-gray-50 border-t border-b border-gray-100 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-[10px] font-black tracking-[0.25em] text-gray-400 uppercase mb-8">
-            TRUSTED BY 500+ INDIAN ENTERPRISES & BPOS
-          </p>
-          <div className="relative flex overflow-x-hidden">
-            <div className="animate-marquee flex whitespace-nowrap gap-16 items-center">
-              <div className="flex items-center gap-16">
-                <div className="transition-transform duration-300 hover:scale-110">
-                  <img className="h-10 w-auto" viewBox="0 0 120 30" src={tcs} alt="tcs image logo" srcset="" />
-                </div>
-                <div className="transition-transform duration-300 hover:scale-110">
-                  <img className="h-10 w-auto" viewBox="0 0 120 30" src={hdfc} alt="hdfc image logo" srcset="" />
-                </div>
-                <div className="transition-transform duration-300 hover:scale-110">
-                  <img className="h-10 w-auto" viewBox="0 0 120 30" src={infosys} alt="tcs image logo" srcset="" />
-                </div>
-                <div className="transition-transform duration-300 hover:scale-110">
-                  <img className="h-10 w-auto" viewBox="0 0 120 30" src={bajaj} alt="tcs image logo" srcset="" />
-                </div>
-                <div className="transition-transform duration-300 hover:scale-110">
-                  <img className="h-10 w-auto" viewBox="0 0 120 30" src={swiggy} alt="tcs image logo" srcset="" />
-                </div>
-                <div className="transition-transform duration-300 hover:scale-110">
-                  <img className="h-10 w-auto" viewBox="0 0 120 30" src={phonepe} alt="tcs image logo" srcset="" />
-                </div>
-                 <div className="transition-transform duration-300 hover:scale-110">
-                  <img className="h-10 w-auto" viewBox="0 0 120 30" src={makemytrip} alt="tcs image logo" srcset="" />
-                </div>
-                <div className="transition-transform duration-300 hover:scale-110">
-                  <img className="h-10 w-auto" viewBox="0 0 120 30" src={policy} alt="tcs image logo" srcset="" />
-                </div>
-                <div className="transition-transform duration-300 hover:scale-110">
-                  <img className="h-10 w-auto" viewBox="0 0 120 30" src={nykaa} alt="tcs image logo" srcset="" />
-                </div>
-                
-              </div>
-            </div>
-            <div className="absolute top-0 animate-marquee2 flex whitespace-nowrap gap-16 items-center" aria-hidden="true">
-              <div className="flex items-center gap-16">
-                <div className="transition-transform duration-300 hover:scale-110">
-                  <img className="h-10 w-auto" viewBox="0 0 120 30" src={tcs} alt="tcs image logo" srcset="" />
-                </div>
-                <div className="transition-transform duration-300 hover:scale-110">
-                  <img className="h-10 w-auto" viewBox="0 0 120 30" src={hdfc} alt="hdfc image logo" srcset="" />
-                </div>
-                <div className="transition-transform duration-300 hover:scale-110">
-                  <img className="h-10 w-auto" viewBox="0 0 120 30" src={infosys} alt="tcs image logo" srcset="" />
-                </div>
-                <div className="transition-transform duration-300 hover:scale-110">
-                  <img className="h-10 w-auto" viewBox="0 0 120 30" src={bajaj} alt="tcs image logo" srcset="" />
-                </div>
-                <div className="transition-transform duration-300 hover:scale-110">
-                  <img className="h-10 w-auto" viewBox="0 0 120 30" src={swiggy} alt="tcs image logo" srcset="" />
-                </div>
-                <div className="transition-transform duration-300 hover:scale-110">
-                  <img className="h-10 w-auto" viewBox="0 0 120 30" src={phonepe} alt="tcs image logo" srcset="" />
-                </div>
-                 <div className="transition-transform duration-300 hover:scale-110">
-                  <img className="h-10 w-auto" viewBox="0 0 120 30" src={makemytrip} alt="tcs image logo" srcset="" />
-                </div>
-                <div className="transition-transform duration-300 hover:scale-110">
-                  <img className="h-10 w-auto" viewBox="0 0 120 30" src={policy} alt="tcs image logo" srcset="" />
-                </div>
-                <div className="transition-transform duration-300 hover:scale-110">
-                  <img className="h-10 w-auto" viewBox="0 0 120 30" src={nykaa} alt="tcs image logo" srcset="" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+                            return (
+                              <div
+                                key={i}
+                                className={`w-[4px] rounded-sm transition-colors duration-1000 ${isSimulating
+                                  ? "bg-[#ffff]"
+                                  : "bg-[#000000]"
+                                  }`}
+                                style={{ height: `${heights[i]}px` }}
+                              />
+                            );
+                          })}
+                        </div>
 
-      {/* Architecture Section */}
-      <section id="how-it-works" className="py-20 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="text-center max-w-xl mx-auto mb-16">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFB000]/10 border border-[#FFB000]/30 text-[9px] font-extrabold text-black uppercase tracking-wider mb-4 animate-pulse">
-                <Cpu className="w-3.5 h-3.5 text-[#FFB000]" />
-                <span>Architectural Supremacy</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-black">
-                Native Audio Engine, <span className="text-[#FFB000]">Not A Relay Glue</span>
-              </h2>
-            </div>
-          </ScrollReveal>
+                        {/* Time */}
+                        <span className="whitespace-nowrap text-[11px] text-[#000000]">
+                          0:00 / 0:14
+                        </span>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Left Box: Standard Delay pipeline */}
-            <ScrollReveal delay={100}>
-              <div className="group relative rounded-2xl border border-gray-200 bg-gray-50/40 p-6 sm:p-8 space-y-6 transition-all duration-500 hover:border-red-200 hover:shadow-md">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-extrabold text-red-500 tracking-wider uppercase">Standard Voice Bots</span>
-                  <span className="text-[10px] bg-red-50 border border-red-100 text-red-600 px-2 py-0.5 rounded-md font-extrabold animate-pulse">Latency: 1.5s+</span>
-                </div>
-
-                {/* Delayed Pipeline Visualizer */}
-                <div className="space-y-2.5">
-                  <div className="flex items-center justify-between p-3 rounded-lg bg-white border border-gray-100 transition-all duration-300 hover:translate-x-1.5 hover:shadow-sm">
-                    <span className="text-[11px] font-bold text-gray-700">Speech-to-Text (STT)</span>
-                    <span className="text-xs font-bold text-red-500">+350ms</span>
-                  </div>
-                  <div className="flex items-center justify-between p-3 rounded-lg bg-white border border-gray-100 transition-all duration-300 hover:translate-x-1.5 hover:shadow-sm">
-                    <span className="text-[11px] font-bold text-gray-700">LLM Inference (GPT-4)</span>
-                    <span className="text-xs font-bold text-red-500">+800ms</span>
-                  </div>
-                  <div className="flex items-center justify-between p-3 rounded-lg bg-white border border-gray-100 transition-all duration-300 hover:translate-x-1.5 hover:shadow-sm">
-                    <span className="text-[11px] font-bold text-gray-700">Text-to-Speech (TTS)</span>
-                    <span className="text-xs font-bold text-red-500">+450ms</span>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Right Box: Audio-Native Model */}
-            <ScrollReveal delay={200}>
-              <div className="group relative rounded-2xl border border-[#FFB000]/40 bg-gradient-to-b from-[#FFB000]/5 to-white p-6 sm:p-8 space-y-6 overflow-hidden shadow-sm transition-all duration-500 hover:scale-[1.02] hover:border-black hover:shadow-xl">
-                <div className="absolute top-0 right-0 w-24 h-24 bg-[#FFB000]/10 rounded-full filter blur-xl animate-pulse duration-[4000ms]" />
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-extrabold text-black tracking-wider uppercase">Demo Audio Model</span>
-                  <span className="text-[10px] bg-green-50 border border-green-100 text-green-600 px-2.5 py-0.5 rounded-md font-extrabold">Latency: Sub-300ms</span>
-                </div>
-
-                {/* Native Audio visualizer box */}
-                <div className="p-5 rounded-xl bg-black text-white flex items-center justify-between relative overflow-hidden group/box shadow-inner">
-                  <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-white/10 -left-1/4 group-hover/box:animate-shine pointer-events-none" />
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-[#FFB000]/20 flex items-center justify-center animate-bounce">
-                      <Zap className="w-4 h-4 text-[#FFB000]" />
-                    </div>
-                    <div>
-                      <span className="text-[10px] uppercase font-extrabold text-white block">Real-time Stream</span>
-                      <span className="text-[9px] text-gray-400">WebRTC Pipeline</span>
+                        {/* Volume Icon */}
+                        <svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#fdffff"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                          <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                          <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                        </svg>
+                      </div>
                     </div>
                   </div>
-                  <span className="text-xs font-black text-[#FFB000] animate-pulse">94ms Instant!</span>
                 </div>
               </div>
-            </ScrollReveal>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Capabilities Section / Bento Grid */}
-      <section id="capabilities" className="py-20 bg-gray-50 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="text-center max-w-xl mx-auto mb-16">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/5 border border-black/10 text-[9px] font-extrabold text-black uppercase tracking-wider mb-4 animate-float">
-                <Sparkles className="w-3.5 h-3.5 text-[#FFB000]" />
-                <span>Sleek Capabilities</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-black">
-                Everything Needed To <span className="text-[#FFB000]">Dominate Voice Calls</span>
-              </h2>
+        {/* Trusted By Loop - Seamless Continuous Animation with exact Brand SVGs (12 Brands duplicated for endless loop) */}
+        <section className="py-12 bg-gray-50 border-t border-b border-gray-100 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p className="text-center text-[10px] font-black tracking-[0.25em] text-gray-400 uppercase mb-8">
+              TRUSTED BY 500+ INDIAN ENTERPRISES & BPOS
+            </p>
+            <div className="w-full py-4">
+              <Swiper
+                modules={[Autoplay]}
+                slidesPerView={5}
+                spaceBetween={40}
+                loop={true}
+                autoplay={{
+                  delay: 0,
+                  disableOnInteraction: false,
+                }}
+                speed={3000}
+                breakpoints={{
+                  320: {
+                    slidesPerView: 2,
+                  },
+                  640: {
+                    slidesPerView: 3,
+                  },
+                  768: {
+                    slidesPerView: 4,
+                  },
+                  1024: {
+                    slidesPerView: 5,
+                  },
+                }}
+                className="w-full"
+              >
+                <SwiperSlide>
+                  <div className="flex justify-center transition-transform duration-300 hover:scale-110">
+                    <img src={tcs} alt="TCS" className="h-20 w-auto" />
+                  </div>
+                </SwiperSlide>
+
+                <SwiperSlide>
+                  <div className="flex justify-center transition-transform duration-300 hover:scale-110">
+                    <img src={hdfc} alt="HDFC" className="h-20 w-auto" />
+                  </div>
+                </SwiperSlide>
+
+                <SwiperSlide>
+                  <div className="flex justify-center transition-transform duration-300 hover:scale-110">
+                    <img src={infosys} alt="Infosys" className="h-20 w-auto" />
+                  </div>
+                </SwiperSlide>
+
+                <SwiperSlide>
+                  <div className="flex justify-center transition-transform duration-300 hover:scale-110">
+                    <img src={bajaj} alt="Bajaj" className="h-20 w-auto" />
+                  </div>
+                </SwiperSlide>
+
+                <SwiperSlide>
+                  <div className="flex justify-center transition-transform duration-300 hover:scale-110">
+                    <img src={swiggy} alt="Swiggy" className="h-20 w-auto" />
+                  </div>
+                </SwiperSlide>
+
+                <SwiperSlide>
+                  <div className="flex justify-center transition-transform duration-300 hover:scale-110">
+                    <img src={phonepe} alt="PhonePe" className="h-20 w-auto" />
+                  </div>
+                </SwiperSlide>
+
+                <SwiperSlide>
+                  <div className="flex justify-center transition-transform duration-300 hover:scale-110">
+                    <img src={makemytrip} alt="MakeMyTrip" className="h-20 w-auto" />
+                  </div>
+                </SwiperSlide>
+
+                <SwiperSlide>
+                  <div className="flex justify-center transition-transform duration-300 hover:scale-110">
+                    <img src={policy} alt="PolicyBazaar" className="h-20 w-auto" />
+                  </div>
+                </SwiperSlide>
+
+                <SwiperSlide>
+                  <div className="flex justify-center transition-transform duration-300 hover:scale-110">
+                    <img src={nykaa} alt="Nykaa" className="h-20 w-auto" />
+                  </div>
+                </SwiperSlide>
+              </Swiper>
             </div>
-          </ScrollReveal>
-
-          {/* Bento Box Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
-            {/* Box 1: AI Receptionist */}
-            <ScrollReveal delay={100}>
-              <div className="relative overflow-hidden md:col-span-2 rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 flex flex-col justify-between hover:border-black/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 group">
-                <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-black/[0.02] -left-1/4 group-hover:animate-shine pointer-events-none" />
-                <div>
-                  <div className="w-10 h-10 rounded-xl bg-[#FFB000]/10 flex items-center justify-center mb-6 group-hover:bg-black group-hover:text-white transition-all duration-500">
-                    <Headphones className="w-5 h-5 text-black group-hover:text-[#FFB000] transition-colors" />
-                  </div>
-                  <h3 className="text-lg font-extrabold text-black mb-2">AI Receptionist</h3>
-                  <p className="text-xs text-gray-500 font-bold leading-relaxed mb-6">
-                    Calls ko answer karein, customers qualify karein, aur bookings directly manage karein 15+ Indian languages me.
-                  </p>
-                </div>
-                <div className="border-t border-gray-100 pt-4 flex items-center gap-6 text-[10px] text-gray-400 font-extrabold uppercase tracking-wider">
-                  <span className="flex items-center gap-1.5 hover:scale-105 transition-transform"><Clock className="w-3.5 h-3.5 text-black" /> 24/7 Support</span>
-                  <span className="flex items-center gap-1.5 hover:scale-105 transition-transform"><Languages className="w-3.5 h-3.5 text-black" /> 15+ languages</span>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Box 2: Latency stats */}
-            <ScrollReveal delay={200}>
-              <div className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 flex flex-col justify-between hover:border-black/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 group">
-                <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-black/[0.02] -left-1/4 group-hover:animate-shine pointer-events-none" />
-                <div>
-                  <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center mb-6">
-                    <Clock className="w-5 h-5 text-black animate-spin-slow" />
-                  </div>
-                  <h3 className="text-base font-extrabold text-black mb-2">94ms Performance</h3>
-                  <p className="text-[11px] text-gray-400 font-bold">Incredibly fast, near zero robotic lag delay.</p>
-                </div>
-                <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mt-6">
-                  <div className="flex justify-between text-[10px] font-extrabold text-gray-500 mb-2">
-                    <span>Demo Latency</span>
-                    <span className="text-[#FFB000] animate-pulse">94ms</span>
-                  </div>
-                  <div className="w-full bg-gray-200 h-1.5 rounded-full overflow-hidden">
-                    <div className="bg-black h-full w-[12%] animate-pulse" />
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Box 3: Outbound */}
-            <ScrollReveal delay={150}>
-              <div className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 flex flex-col justify-between hover:border-black/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 group">
-                <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-black/[0.02] -left-1/4 group-hover:animate-shine pointer-events-none" />
-                <div>
-                  <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center mb-6 transition-transform duration-500 group-hover:rotate-12">
-                    <TrendingUp className="w-5 h-5 text-black" />
-                  </div>
-                  <h3 className="text-base font-extrabold text-black mb-2">Outbound Campaigns</h3>
-                  <p className="text-[11px] text-gray-400 font-bold">Automated payment links, renewals, and EMI feedback followups.</p>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Box 4: Compliant & Carrier-Grade */}
-            <ScrollReveal delay={250}>
-              <div className="relative overflow-hidden md:col-span-2 rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 flex flex-col justify-between hover:border-black/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 group shadow-sm">
-                <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-black/[0.02] -left-1/4 group-hover:animate-shine pointer-events-none" />
-                <div>
-                  <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:bg-[#FFB000]/20">
-                    <ShieldCheck className="w-5 h-5 text-black" />
-                  </div>
-                  <h3 className="text-lg font-extrabold text-black mb-2">TRAI & DPDP Compliance</h3>
-                  <p className="text-xs text-gray-500 font-bold leading-relaxed">
-                    Enforces calling windows (9 AM–9 PM), scrubs DND registries, and stores data securely inside Indian circular networks.
-                  </p>
-                </div>
-                <div className="grid grid-cols-3 gap-4 border-t border-gray-100 pt-4 mt-6 text-[9px] font-extrabold text-gray-600 uppercase tracking-widest">
-                  <span className="flex items-center gap-1 hover:scale-105 transition-transform"><Lock className="w-3.5 h-3.5 text-[#FFB000]" /> DPDP Lock</span>
-                  <span className="flex items-center gap-1 hover:scale-105 transition-transform"><Clock className="w-3.5 h-3.5 text-[#FFB000]" /> 9AM - 9PM</span>
-                  <span className="flex items-center gap-1 hover:scale-105 transition-transform"><ShieldCheck className="w-3.5 h-3.5 text-[#FFB000]" /> DNC Scrub</span>
-                </div>
-              </div>
-            </ScrollReveal>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Industries Served */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="text-center max-w-xl mx-auto mb-12">
-              <span className="text-[10px] font-black text-[#FFB000] tracking-widest uppercase">Target Use Cases</span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mt-2 text-black">
-                Built For <span className="text-black border-b-4 border-[#FFB000]">Your Industry</span>
-              </h2>
-            </div>
-          </ScrollReveal>
+        {/* Architecture Section */}
+        <section id="how-it-works" className="py-20 bg-white border-b border-gray-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <ScrollReveal>
+              <div className="text-center max-w-xl mx-auto mb-16">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFB000]/10 border border-[#FFB000]/30 text-[9px] font-extrabold text-black uppercase tracking-wider mb-4 animate-pulse">
+                  <Cpu className="w-3.5 h-3.5 text-[#FFB000]" />
+                  <span>Architectural Supremacy</span>
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-black">
+                  Native Audio Engine, <span className="text-[#FFB000]">Not A Relay Glue</span>
+                </h2>
+              </div>
+            </ScrollReveal>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            {/* Sidebar selection tabs */}
-            <div className="lg:col-span-4 space-y-2">
-              {industries.map((ind, idx) => (
-                <ScrollReveal key={ind.id} delay={idx * 50}>
-                  <button
-                    onClick={() => setIndustryActiveTab(ind.id)}
-                    className={`w-full text-left p-4 rounded-xl border transition-all duration-500 flex items-center justify-between transform ${
-                      industryActiveTab === ind.id
-                        ? 'bg-black border-black text-white translate-x-3 shadow-lg scale-[1.02]'
-                        : 'bg-transparent border-gray-200 text-gray-500 hover:text-black hover:bg-gray-50 hover:translate-x-1'
-                    }`}
-                  >
-                    <span className="text-xs font-extrabold uppercase tracking-wider">{ind.name}</span>
-                    <ChevronRight className={`w-4 h-4 transition-transform duration-300 ${industryActiveTab === ind.id ? 'translate-x-1.5 text-[#FFB000]' : 'text-gray-400'}`} />
-                  </button>
-                </ScrollReveal>
-              ))}
-            </div>
-
-            {/* Display pane */}
-            <div className="lg:col-span-8">
-              <ScrollReveal delay={150}>
-                <div className="relative overflow-hidden bg-gray-50 border border-gray-200 rounded-2xl p-6 sm:p-8 flex flex-col justify-between h-full min-h-[320px] transition-all duration-500 hover:shadow-xl hover:border-black/20 group">
-                  <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-white/40 -left-1/4 group-hover:animate-shine pointer-events-none" />
-                  <div className="space-y-4">
-                    <span className="inline-block px-3 py-1 rounded bg-black text-white text-[9px] font-extrabold uppercase tracking-widest animate-pulse">
-                      {industries.find(i => i.id === industryActiveTab)?.tag}
-                    </span>
-                    <h3 className="text-xl font-black text-black">
-                      {industries.find(i => i.id === industryActiveTab)?.name} Automation
-                    </h3>
-                    <p className="text-gray-600 text-xs font-bold leading-relaxed animate-fade-in">
-                      {industries.find(i => i.id === industryActiveTab)?.desc}
-                    </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Left Box: Standard Delay pipeline */}
+              <ScrollReveal delay={100}>
+                <div className="group relative rounded-2xl border border-gray-200 bg-gray-50/40 p-6 sm:p-8 space-y-6 transition-all duration-500 hover:border-red-200 hover:shadow-md">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-extrabold text-red-500 tracking-wider uppercase">Standard Voice Bots</span>
+                    <span className="text-[10px] bg-red-50 border border-red-100 text-red-600 px-2 py-0.5 rounded-md font-extrabold animate-pulse">Latency: 1.5s+</span>
                   </div>
 
-                  <div className="border-t border-gray-200 pt-6 mt-8 flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
-                    <div className="text-[10px] text-gray-400 font-extrabold uppercase tracking-wider">
-                      ⚡ Ready-to-use dialer templates available.
+                  {/* Delayed Pipeline Visualizer */}
+                  <div className="space-y-2.5">
+                    <div className="flex items-center justify-between p-3 rounded-lg bg-white border border-gray-100 transition-all duration-300 hover:translate-x-1.5 hover:shadow-sm">
+                      <span className="text-[11px] font-bold text-gray-700">Speech-to-Text (STT)</span>
+                      <span className="text-xs font-bold text-red-500">+350ms</span>
                     </div>
-                    <button 
-                      onClick={() => setIsDemoModalOpen(true)}
-                      className="flex items-center gap-1.5 text-xs text-black font-extrabold hover:underline hover:scale-105 transition-all duration-300 group/btn"
-                    >
-                      <span>Request Live Setup</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-[#FFB000] transition-transform duration-300 group-hover/btn:translate-x-1.5" />
-                    </button>
+                    <div className="flex items-center justify-between p-3 rounded-lg bg-white border border-gray-100 transition-all duration-300 hover:translate-x-1.5 hover:shadow-sm">
+                      <span className="text-[11px] font-bold text-gray-700">LLM Inference (GPT-4)</span>
+                      <span className="text-xs font-bold text-red-500">+800ms</span>
+                    </div>
+                    <div className="flex items-center justify-between p-3 rounded-lg bg-white border border-gray-100 transition-all duration-300 hover:translate-x-1.5 hover:shadow-sm">
+                      <span className="text-[11px] font-bold text-gray-700">Text-to-Speech (TTS)</span>
+                      <span className="text-xs font-bold text-red-500">+450ms</span>
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              {/* Right Box: Audio-Native Model */}
+              <ScrollReveal delay={200}>
+                <div className="group relative rounded-2xl border border-[#FFB000]/40 bg-gradient-to-b from-[#FFB000]/5 to-white p-6 sm:p-8 space-y-6 overflow-hidden shadow-sm transition-all duration-500 hover:scale-[1.02] hover:border-black hover:shadow-xl">
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-[#FFB000]/10 rounded-full filter blur-xl animate-pulse duration-[4000ms]" />
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-extrabold text-black tracking-wider uppercase">Demo Audio Model</span>
+                    <span className="text-[10px] bg-green-50 border border-green-100 text-green-600 px-2.5 py-0.5 rounded-md font-extrabold">Latency: Sub-300ms</span>
+                  </div>
+
+                  {/* Native Audio visualizer box */}
+                  <div className="p-5 rounded-xl bg-black text-white flex items-center justify-between relative overflow-hidden group/box shadow-inner">
+                    <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-white/10 -left-1/4 group-hover/box:animate-shine pointer-events-none" />
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-[#FFB000]/20 flex items-center justify-center animate-bounce">
+                        <Zap className="w-4 h-4 text-[#FFB000]" />
+                      </div>
+                      <div>
+                        <span className="text-[10px] uppercase font-extrabold text-white block">Real-time Stream</span>
+                        <span className="text-[9px] text-gray-400">WebRTC Pipeline</span>
+                      </div>
+                    </div>
+                    <span className="text-xs font-black text-[#FFB000] animate-pulse">94ms Instant!</span>
                   </div>
                 </div>
               </ScrollReveal>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Integration Ecosystem */}
-      <section id="integrations" className="py-20 bg-gray-50 border-t border-b border-gray-200 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        {/* Capabilities Section / Bento Grid */}
+        <section id="capabilities" className="py-20 bg-gray-50 relative">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollReveal>
-              <div className="space-y-6">
-                <span className="text-[10px] font-extrabold text-black tracking-widest uppercase">Ecosystem Synchronization</span>
+              <div className="text-center max-w-xl mx-auto mb-16">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/5 border border-black/10 text-[9px] font-extrabold text-black uppercase tracking-wider mb-4 animate-float">
+                  <Sparkles className="w-3.5 h-3.5 text-[#FFB000]" />
+                  <span>Sleek Capabilities</span>
+                </div>
                 <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-black">
-                  200+ Integrations With <span className="text-[#FFB000]">Tools You Already Use</span>
+                  Everything Needed To <span className="text-[#FFB000]">Dominate Voice Calls</span>
                 </h2>
-                <p className="text-gray-500 text-xs font-bold leading-relaxed">
-                  Seamlessly trigger calls from your CRM, pull consumer details, record customer interactions, and update pipeline databases instantly.
-                </p>
+              </div>
+            </ScrollReveal>
 
-                {/* Integration tags badge container */}
-                <div className="flex flex-wrap gap-2">
-                  {['Zoho CRM', 'Freshworks', 'LeadSquared', 'WhatsApp Business', 'Razorpay', 'Tally Prime', 'Salesforce', 'Zapier', 'HubSpot'].map((tool, idx) => (
-                    <span 
-                      key={idx} 
-                      className="px-3.5 py-1.5 rounded-full bg-white border border-gray-200 text-[10px] font-bold uppercase tracking-wider text-gray-600 shadow-sm transition-all duration-300 hover:scale-110 hover:border-[#FFB000] hover:text-black hover:shadow-md cursor-default"
+            {/* Bento Box Layout */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+              {/* Box 1: AI Receptionist */}
+              <ScrollReveal delay={100}>
+                <div className="relative overflow-hidden md:col-span-2 rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 flex flex-col justify-between hover:border-black/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 group">
+                  <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-black/[0.02] -left-1/4 group-hover:animate-shine pointer-events-none" />
+                  <div>
+                    <div className="w-10 h-10 rounded-xl bg-[#FFB000]/10 flex items-center justify-center mb-6 group-hover:bg-black group-hover:text-white transition-all duration-500">
+                      <Headphones className="w-5 h-5 text-black group-hover:text-[#FFB000] transition-colors" />
+                    </div>
+                    <h3 className="text-lg font-extrabold text-black mb-2">AI Receptionist</h3>
+                    <p className="text-xs text-gray-500 font-bold leading-relaxed mb-6">
+                      Calls ko answer karein, customers qualify karein, aur bookings directly manage karein 15+ Indian languages me.
+                    </p>
+                  </div>
+                  <div className="border-t border-gray-100 pt-4 flex items-center gap-6 text-[10px] text-gray-400 font-extrabold uppercase tracking-wider">
+                    <span className="flex items-center gap-1.5 hover:scale-105 transition-transform"><Clock className="w-3.5 h-3.5 text-black" /> 24/7 Support</span>
+                    <span className="flex items-center gap-1.5 hover:scale-105 transition-transform"><Languages className="w-3.5 h-3.5 text-black" /> 15+ languages</span>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              {/* Box 2: Latency stats */}
+              <ScrollReveal delay={200}>
+                <div className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 flex flex-col justify-between hover:border-black/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 group">
+                  <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-black/[0.02] -left-1/4 group-hover:animate-shine pointer-events-none" />
+                  <div>
+                    <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center mb-6">
+                      <Clock className="w-5 h-5 text-black animate-spin-slow" />
+                    </div>
+                    <h3 className="text-base font-extrabold text-black mb-2">94ms Performance</h3>
+                    <p className="text-[11px] text-gray-400 font-bold">Incredibly fast, near zero robotic lag delay.</p>
+                  </div>
+                  <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mt-6">
+                    <div className="flex justify-between text-[10px] font-extrabold text-gray-500 mb-2">
+                      <span>Demo Latency</span>
+                      <span className="text-[#FFB000] animate-pulse">94ms</span>
+                    </div>
+                    <div className="w-full bg-gray-200 h-1.5 rounded-full overflow-hidden">
+                      <div className="bg-black h-full w-[12%] animate-pulse" />
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              {/* Box 3: Outbound */}
+              <ScrollReveal delay={150}>
+                <div className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 flex flex-col justify-between hover:border-black/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 group">
+                  <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-black/[0.02] -left-1/4 group-hover:animate-shine pointer-events-none" />
+                  <div>
+                    <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center mb-6 transition-transform duration-500 group-hover:rotate-12">
+                      <TrendingUp className="w-5 h-5 text-black" />
+                    </div>
+                    <h3 className="text-base font-extrabold text-black mb-2">Outbound Campaigns</h3>
+                    <p className="text-[11px] text-gray-400 font-bold">Automated payment links, renewals, and EMI feedback followups.</p>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              {/* Box 4: Compliant & Carrier-Grade */}
+              <ScrollReveal delay={250}>
+                <div className="relative overflow-hidden md:col-span-2 rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 flex flex-col justify-between hover:border-black/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 group shadow-sm">
+                  <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-black/[0.02] -left-1/4 group-hover:animate-shine pointer-events-none" />
+                  <div>
+                    <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center mb-6 transition-all duration-500 group-hover:bg-[#FFB000]/20">
+                      <ShieldCheck className="w-5 h-5 text-black" />
+                    </div>
+                    <h3 className="text-lg font-extrabold text-black mb-2">TRAI & DPDP Compliance</h3>
+                    <p className="text-xs text-gray-500 font-bold leading-relaxed">
+                      Enforces calling windows (9 AM–9 PM), scrubs DND registries, and stores data securely inside Indian circular networks.
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-3 gap-4 border-t border-gray-100 pt-4 mt-6 text-[9px] font-extrabold text-gray-600 uppercase tracking-widest">
+                    <span className="flex items-center gap-1 hover:scale-105 transition-transform"><Lock className="w-3.5 h-3.5 text-[#FFB000]" /> DPDP Lock</span>
+                    <span className="flex items-center gap-1 hover:scale-105 transition-transform"><Clock className="w-3.5 h-3.5 text-[#FFB000]" /> 9AM - 9PM</span>
+                    <span className="flex items-center gap-1 hover:scale-105 transition-transform"><ShieldCheck className="w-3.5 h-3.5 text-[#FFB000]" /> DNC Scrub</span>
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+          </div>
+        </section>
+
+        {/* Industries Served */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <ScrollReveal>
+              <div className="text-center max-w-xl mx-auto mb-12">
+                <span className="text-[10px] font-black text-[#FFB000] tracking-widest uppercase">Target Use Cases</span>
+                <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mt-2 text-black">
+                  Built For <span className="text-black border-b-4 border-[#FFB000]">Your Industry</span>
+                </h2>
+              </div>
+            </ScrollReveal>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+              {/* Sidebar selection tabs */}
+              <div className="lg:col-span-4 space-y-2">
+                {industries.map((ind, idx) => (
+                  <ScrollReveal key={ind.id} delay={idx * 50}>
+                    <button
+                      onClick={() => setIndustryActiveTab(ind.id)}
+                      className={`w-full text-left p-4 rounded-xl border transition-all duration-500 flex items-center justify-between transform ${industryActiveTab === ind.id
+                        ? 'bg-black border-black text-white translate-x-3 shadow-lg scale-[1.02]'
+                        : 'bg-transparent border-gray-200 text-gray-500 hover:text-black hover:bg-gray-50 hover:translate-x-1'
+                        }`}
                     >
-                      {tool}
-                    </span>
-                  ))}
-                </div>
+                      <span className="text-xs font-extrabold uppercase tracking-wider">{ind.name}</span>
+                      <ChevronRight className={`w-4 h-4 transition-transform duration-300 ${industryActiveTab === ind.id ? 'translate-x-1.5 text-[#FFB000]' : 'text-gray-400'}`} />
+                    </button>
+                  </ScrollReveal>
+                ))}
               </div>
-            </ScrollReveal>
 
-            {/* Graphic Showcase Container */}
-            <ScrollReveal delay={200}>
-              <div className="relative rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-500 group">
-                <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-black/[0.01] -left-1/4 group-hover:animate-shine pointer-events-none" />
-                <div className="flex items-center justify-between pb-4 border-b border-gray-100 mb-6">
-                  <span className="text-[10px] font-extrabold text-gray-400 uppercase tracking-widest">Pipeline Synchronization</span>
-                  <span className="text-[9px] text-green-600 font-black tracking-widest uppercase animate-pulse">Online</span>
-                </div>
+              {/* Display pane */}
+              <div className="lg:col-span-8">
+                <ScrollReveal delay={150}>
+                  <div className="relative overflow-hidden bg-gray-50 border border-gray-200 rounded-2xl p-6 sm:p-8 flex flex-col justify-between h-full min-h-[320px] transition-all duration-500 hover:shadow-xl hover:border-black/20 group">
+                    <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-white/40 -left-1/4 group-hover:animate-shine pointer-events-none" />
+                    <div className="space-y-4">
+                      <span className="inline-block px-3 py-1 rounded bg-black text-white text-[9px] font-extrabold uppercase tracking-widest animate-pulse">
+                        {industries.find(i => i.id === industryActiveTab)?.tag}
+                      </span>
+                      <h3 className="text-xl font-black text-black">
+                        {industries.find(i => i.id === industryActiveTab)?.name} Automation
+                      </h3>
+                      <p className="text-gray-600 text-xs font-bold leading-relaxed animate-fade-in">
+                        {industries.find(i => i.id === industryActiveTab)?.desc}
+                      </p>
+                    </div>
 
-                {/* Graphic Flow animation */}
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between p-3 rounded-xl bg-gray-50 border border-gray-200 transition-transform duration-300 hover:translate-x-1.5">
-                    <div className="flex items-center gap-2.5">
-                      <Database className="w-4 h-4 text-black animate-pulse" />
-                      <span className="text-[11px] font-bold text-black">Incoming Call Registered</span>
+                    <div className="border-t border-gray-200 pt-6 mt-8 flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
+                      <div className="text-[10px] text-gray-400 font-extrabold uppercase tracking-wider">
+                        ⚡ Ready-to-use dialer templates available.
+                      </div>
+                      <button
+                        onClick={() => setIsDemoModalOpen(true)}
+                        className="flex items-center gap-1.5 text-xs text-black font-extrabold hover:underline hover:scale-105 transition-all duration-300 group/btn"
+                      >
+                        <span>Request Live Setup</span>
+                        <ArrowRight className="w-3.5 h-3.5 text-[#FFB000] transition-transform duration-300 group-hover/btn:translate-x-1.5" />
+                      </button>
                     </div>
                   </div>
-
-                  <div className="h-4 flex justify-center items-center">
-                    <div className="w-0.5 h-full bg-black/40 animate-pulse" />
-                  </div>
-
-                  <div className="flex items-center justify-between p-3 rounded-xl bg-gray-50 border border-green-200 transition-transform duration-300 hover:translate-x-1.5">
-                    <div className="flex items-center gap-2.5">
-                      <Sliders className="w-4 h-4 text-green-600" />
-                      <span className="text-[11px] font-bold text-black">Lead Created in Zoho CRM</span>
-                    </div>
-                  </div>
-
-                  <div className="h-4 flex justify-center items-center">
-                    <div className="w-0.5 h-full bg-green-400/40 animate-pulse" />
-                  </div>
-
-                  <div className="flex items-center justify-between p-3 rounded-xl bg-gray-50 border border-green-200 transition-transform duration-300 hover:translate-x-1.5">
-                    <div className="flex items-center gap-2.5">
-                      <MessageSquare className="w-4 h-4 text-green-600 animate-bounce" />
-                      <span className="text-[11px] font-bold text-black">Invoice Sent Over WhatsApp</span>
-                    </div>
-                  </div>
-                </div>
+                </ScrollReveal>
               </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Comparison Matrix Section */}
-      <section id="comparison" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="text-center max-w-xl mx-auto mb-12">
-              <span className="text-[10px] font-black text-[#FFB000] tracking-widest uppercase">Competitive Specs</span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mt-2 text-black">
-                Why Indian Teams <span className="text-[#FFB000]">Select Demo</span>
-              </h2>
             </div>
-          </ScrollReveal>
+          </div>
+        </section>
 
-          <ScrollReveal delay={150}>
-            <div className="overflow-x-auto transition-transform duration-500 hover:scale-[1.01] hover:shadow-lg rounded-2xl">
-              <table className="w-full text-left border-collapse border border-gray-200 bg-white rounded-2xl overflow-hidden shadow-sm">
-                <thead>
-                  <tr className="border-b border-gray-200 bg-gray-50">
-                    <th className="p-4 text-[10px] font-black tracking-widest text-gray-500 uppercase">Dimension</th>
-                    <th className="p-4 text-[10px] font-extrabold text-black bg-[#FFB000]/10 uppercase tracking-widest">Demo.io</th>
-                    <th className="p-4 text-[10px] font-black tracking-widest text-gray-500 uppercase">Global Platforms</th>
-                    <th className="p-4 text-[10px] font-black tracking-widest text-gray-500 uppercase">Indian Enterprise CX</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-100 text-xs text-gray-600 font-semibold">
-                  {[
-                    { dim: 'Market Focus', demo: 'India-First (15+ Indian dialects)', global: 'Global (US-Centric model tuning)', enterprise: 'Broad enterprise CX' },
-                    { dim: 'Engine Architecture', demo: 'Single Audio-Native Model', global: 'STT + LLM + TTS pipeline lag', enterprise: 'Layered pipeline' },
-                    { dim: 'Demo Latency', demo: '94ms Live Latency', global: '600ms - 1.5s typical lag', enterprise: '400ms - 1s typical' },
-                    { dim: 'TRAI & DPDP Compliance', demo: 'Built-in standard', global: 'Not supported natively', enterprise: 'Varies (enterprise setup)' }
-                  ].map((row, idx) => (
-                    <tr key={idx} className="hover:bg-gray-50 transition-colors duration-300">
-                      <td className="p-4 font-extrabold text-black">{row.dim}</td>
-                      <td className="p-4 font-bold text-black bg-[#FFB000]/5">{row.demo}</td>
-                      <td className="p-4 text-gray-400">{row.global}</td>
-                      <td className="p-4 text-gray-400">{row.enterprise}</td>
+        {/* Integration Ecosystem */}
+        <section id="integrations" className="py-20 bg-gray-50 border-t border-b border-gray-200 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <ScrollReveal>
+                <div className="space-y-6">
+                  <span className="text-[10px] font-extrabold text-black tracking-widest uppercase">Ecosystem Synchronization</span>
+                  <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-black">
+                    200+ Integrations With <span className="text-[#FFB000]">Tools You Already Use</span>
+                  </h2>
+                  <p className="text-gray-500 text-xs font-bold leading-relaxed">
+                    Seamlessly trigger calls from your CRM, pull consumer details, record customer interactions, and update pipeline databases instantly.
+                  </p>
+
+                  {/* Integration tags badge container */}
+                  <div className="flex flex-wrap gap-2">
+                    {['Zoho CRM', 'Freshworks', 'LeadSquared', 'WhatsApp Business', 'Razorpay', 'Tally Prime', 'Salesforce', 'Zapier', 'HubSpot'].map((tool, idx) => (
+                      <span
+                        key={idx}
+                        className="px-3.5 py-1.5 rounded-full bg-white border border-gray-200 text-[10px] font-bold uppercase tracking-wider text-gray-600 shadow-sm transition-all duration-300 hover:scale-110 hover:border-[#FFB000] hover:text-black hover:shadow-md cursor-default"
+                      >
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              {/* Graphic Showcase Container */}
+              <ScrollReveal delay={200}>
+                <div className="relative rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-500 group">
+                  <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-black/[0.01] -left-1/4 group-hover:animate-shine pointer-events-none" />
+                  <div className="flex items-center justify-between pb-4 border-b border-gray-100 mb-6">
+                    <span className="text-[10px] font-extrabold text-gray-400 uppercase tracking-widest">Pipeline Synchronization</span>
+                    <span className="text-[9px] text-green-600 font-black tracking-widest uppercase animate-pulse">Online</span>
+                  </div>
+
+                  {/* Graphic Flow animation */}
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between p-3 rounded-xl bg-gray-50 border border-gray-200 transition-transform duration-300 hover:translate-x-1.5">
+                      <div className="flex items-center gap-2.5">
+                        <Database className="w-4 h-4 text-black animate-pulse" />
+                        <span className="text-[11px] font-bold text-black">Incoming Call Registered</span>
+                      </div>
+                    </div>
+
+                    <div className="h-4 flex justify-center items-center">
+                      <div className="w-0.5 h-full bg-black/40 animate-pulse" />
+                    </div>
+
+                    <div className="flex items-center justify-between p-3 rounded-xl bg-gray-50 border border-green-200 transition-transform duration-300 hover:translate-x-1.5">
+                      <div className="flex items-center gap-2.5">
+                        <Sliders className="w-4 h-4 text-green-600" />
+                        <span className="text-[11px] font-bold text-black">Lead Created in Zoho CRM</span>
+                      </div>
+                    </div>
+
+                    <div className="h-4 flex justify-center items-center">
+                      <div className="w-0.5 h-full bg-green-400/40 animate-pulse" />
+                    </div>
+
+                    <div className="flex items-center justify-between p-3 rounded-xl bg-gray-50 border border-green-200 transition-transform duration-300 hover:translate-x-1.5">
+                      <div className="flex items-center gap-2.5">
+                        <MessageSquare className="w-4 h-4 text-green-600 animate-bounce" />
+                        <span className="text-[11px] font-bold text-black">Invoice Sent Over WhatsApp</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+          </div>
+        </section>
+
+        {/* Comparison Matrix Section */}
+        <section id="comparison" className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <ScrollReveal>
+              <div className="text-center max-w-xl mx-auto mb-12">
+                <span className="text-[10px] font-black text-[#FFB000] tracking-widest uppercase">Competitive Specs</span>
+                <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mt-2 text-black">
+                  Why Indian Teams <span className="text-[#FFB000]">Select Demo</span>
+                </h2>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={150}>
+              <div className="overflow-x-auto transition-transform duration-500 hover:scale-[1.01] hover:shadow-lg rounded-2xl">
+                <table className="w-full text-left border-collapse border border-gray-200 bg-white rounded-2xl overflow-hidden shadow-sm">
+                  <thead>
+                    <tr className="border-b border-gray-200 bg-gray-50">
+                      <th className="p-4 text-[10px] font-black tracking-widest text-gray-500 uppercase">Dimension</th>
+                      <th className="p-4 text-[10px] font-extrabold text-black bg-[#FFB000]/10 uppercase tracking-widest">Demo.io</th>
+                      <th className="p-4 text-[10px] font-black tracking-widest text-gray-500 uppercase">Global Platforms</th>
+                      <th className="p-4 text-[10px] font-black tracking-widest text-gray-500 uppercase">Indian Enterprise CX</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100 text-xs text-gray-600 font-semibold">
+                    {[
+                      { dim: 'Market Focus', demo: 'India-First (15+ Indian dialects)', global: 'Global (US-Centric model tuning)', enterprise: 'Broad enterprise CX' },
+                      { dim: 'Engine Architecture', demo: 'Single Audio-Native Model', global: 'STT + LLM + TTS pipeline lag', enterprise: 'Layered pipeline' },
+                      { dim: 'Demo Latency', demo: '94ms Live Latency', global: '600ms - 1.5s typical lag', enterprise: '400ms - 1s typical' },
+                      { dim: 'TRAI & DPDP Compliance', demo: 'Built-in standard', global: 'Not supported natively', enterprise: 'Varies (enterprise setup)' }
+                    ].map((row, idx) => (
+                      <tr key={idx} className="hover:bg-gray-50 transition-colors duration-300">
+                        <td className="p-4 font-extrabold text-black">{row.dim}</td>
+                        <td className="p-4 font-bold text-black bg-[#FFB000]/5">{row.demo}</td>
+                        <td className="p-4 text-gray-400">{row.global}</td>
+                        <td className="p-4 text-gray-400">{row.enterprise}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
 
-      {/* Pricing and Usage Calculator Section */}
-      <section id="pricing" className="py-20 bg-gray-50 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <div className="text-center max-w-xl mx-auto mb-16">
-              <span className="text-[10px] font-black text-black tracking-widest uppercase">Transparent Pricing</span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mt-2 text-black">
-                No Contracts, <span className="text-[#FFB000]">GST Invoice Included</span>
-              </h2>
-            </div>
-          </ScrollReveal>
+        {/* Pricing and Usage Calculator Section */}
+        <section id="pricing" className="py-20 bg-gray-50 relative">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <ScrollReveal>
+              <div className="text-center max-w-xl mx-auto mb-16">
+                <span className="text-[10px] font-black text-black tracking-widest uppercase">Transparent Pricing</span>
+                <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mt-2 text-black">
+                  No Contracts, <span className="text-[#FFB000]">GST Invoice Included</span>
+                </h2>
+              </div>
+            </ScrollReveal>
 
-          {/* Pricing Plans Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            
-            {/* Plan 1: Starter */}
+            {/* Pricing Plans Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+
+              {/* Plan 1: Starter */}
+              <ScrollReveal delay={100}>
+                <div
+                  onClick={() => setSelectedPlan('Starter')}
+                  className={`rounded-2xl border bg-white p-6 sm:p-8 flex flex-col justify-between relative transition-all duration-500 shadow-sm cursor-pointer ${selectedPlan === 'Starter' ? 'border-[#FFB000] ring-4 ring-[#FFB000]/20 scale-105' : 'border-gray-200 hover:border-black/30 hover:scale-[1.02]'
+                    }`}
+                >
+                  <div>
+                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-gray-500 block mb-2">Starter</span>
+                    <p className="text-3xl font-black text-black">₹3,000<span className="text-xs font-normal text-gray-500">/mo</span></p>
+                    <div className="w-full bg-gray-100 h-px my-4" />
+                    <ul className="space-y-3 text-[11px] text-gray-600 font-bold">
+                      <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFB000]" /> Rate: ₹12/min</li>
+                      <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFB000]" /> 250 included minutes</li>
+                      <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFB000]" /> 2 AI voice agents</li>
+                      <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFB000]" /> 1 Phone number</li>
+                      <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFB000]" /> 3 Concurrent calls</li>
+                    </ul>
+                  </div>
+                  <button
+                    className="w-full py-2.5 rounded-xl mt-6 font-extrabold text-[10px] uppercase tracking-wider border border-gray-200 hover:border-black text-black transition-all bg-gray-50"
+                  >
+                    Choose Starter
+                  </button>
+                </div>
+              </ScrollReveal>
+
+              {/* Plan 2: Growth (Most Popular) */}
+              <ScrollReveal delay={200}>
+                <div
+                  onClick={() => setSelectedPlan('Growth')}
+                  className={`rounded-2xl border bg-white p-6 sm:p-8 flex flex-col justify-between relative transition-all duration-500 shadow-md cursor-pointer ${selectedPlan === 'Growth' ? 'border-black ring-4 ring-black/10 scale-105' : 'border-[#FFB000] hover:scale-105'
+                    }`}
+                >
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-black text-white font-black text-[9px] px-3 py-1 rounded-full uppercase tracking-wider animate-pulse">
+                    Most Popular
+                  </span>
+                  <div>
+                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#FFB000] block mb-2">Growth</span>
+                    <p className="text-3xl font-black text-black">₹8,800<span className="text-xs font-normal text-gray-500">/mo</span></p>
+                    <div className="w-full bg-gray-100 h-px my-4" />
+                    <ul className="space-y-3 text-[11px] text-gray-600 font-bold">
+                      <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-black" /> Rate: ₹11/min</li>
+                      <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-black" /> 800 included minutes</li>
+                      <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-black" /> 10 AI voice agents</li>
+                      <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-black" /> 3 Phone numbers</li>
+                      <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-black" /> 12 Concurrent calls</li>
+                    </ul>
+                  </div>
+                  <button
+                    className="w-full py-2.5 rounded-xl mt-6 font-extrabold text-[10px] uppercase tracking-wider bg-[#FFB000] hover:bg-black hover:text-white text-black transition-all"
+                  >
+                    Choose Growth
+                  </button>
+                </div>
+              </ScrollReveal>
+
+              {/* Plan 3: Scale */}
+              <ScrollReveal delay={300}>
+                <div
+                  onClick={() => setSelectedPlan('Scale')}
+                  className={`rounded-2xl border bg-white p-6 sm:p-8 flex flex-col justify-between relative transition-all duration-500 shadow-sm cursor-pointer ${selectedPlan === 'Scale' ? 'border-[#FFB000] ring-4 ring-[#FFB000]/20 scale-105' : 'border-gray-200 hover:border-black/30 hover:scale-[1.02]'
+                    }`}
+                >
+                  <div>
+                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-gray-500 block mb-2">Scale</span>
+                    <p className="text-3xl font-black text-black">₹30,000<span className="text-xs font-normal text-gray-500">/mo</span></p>
+                    <div className="w-full bg-gray-100 h-px my-4" />
+                    <ul className="space-y-3 text-[11px] text-gray-600 font-bold">
+                      <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFB000]" /> Rate: ₹10/min</li>
+                      <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFB000]" /> 3,000 included minutes</li>
+                      <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFB000]" /> Unlimited AI agents</li>
+                      <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFB000]" /> 15 Phone numbers</li>
+                      <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFB000]" /> 40 Concurrent calls</li>
+                    </ul>
+                  </div>
+                  <button
+                    className="w-full py-2.5 rounded-xl mt-6 font-extrabold text-[10px] uppercase tracking-wider border border-gray-200 hover:border-black text-black transition-all bg-gray-50"
+                  >
+                    Choose Scale
+                  </button>
+                </div>
+              </ScrollReveal>
+
+            </div>
+
+            {/* Interactive Calculator Slider Block */}
             <ScrollReveal delay={100}>
-              <div 
-                onClick={() => setSelectedPlan('Starter')}
-                className={`rounded-2xl border bg-white p-6 sm:p-8 flex flex-col justify-between relative transition-all duration-500 shadow-sm cursor-pointer ${
-                  selectedPlan === 'Starter' ? 'border-[#FFB000] ring-4 ring-[#FFB000]/20 scale-105' : 'border-gray-200 hover:border-black/30 hover:scale-[1.02]'
-                }`}
-              >
-                <div>
-                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-gray-500 block mb-2">Starter</span>
-                  <p className="text-3xl font-black text-black">₹3,000<span className="text-xs font-normal text-gray-500">/mo</span></p>
-                  <div className="w-full bg-gray-100 h-px my-4" />
-                  <ul className="space-y-3 text-[11px] text-gray-600 font-bold">
-                    <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFB000]" /> Rate: ₹12/min</li>
-                    <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFB000]" /> 250 included minutes</li>
-                    <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFB000]" /> 2 AI voice agents</li>
-                    <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFB000]" /> 1 Phone number</li>
-                    <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFB000]" /> 3 Concurrent calls</li>
-                  </ul>
+              <div className="rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 max-w-3xl mx-auto shadow-sm hover:shadow-xl transition-all duration-500">
+                <h3 className="text-base font-extrabold text-black mb-1">Estimate Custom Monthly Volume</h3>
+                <p className="text-[10px] text-gray-400 mb-6 font-extrabold uppercase tracking-wider">Drag the slider to adjust expected calling minutes</p>
+
+                <div className="space-y-6">
+                  <div className="flex items-center justify-between text-sm font-extrabold">
+                    <span className="text-gray-500 uppercase tracking-wider text-xs">Total Calling Minutes</span>
+                    <span className="text-black text-sm bg-[#FFB000]/10 border border-[#FFB000]/30 px-3 py-1 rounded-md animate-pulse">{customMinutes.toLocaleString()} Min / mo</span>
+                  </div>
+
+                  <input
+                    type="range"
+                    min="500"
+                    max="20000"
+                    step="500"
+                    value={customMinutes}
+                    onChange={(e) => setCustomMinutes(Number(e.target.value))}
+                    className="w-full h-1.5 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-black transition-all"
+                  />
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-gray-100 text-center">
+                    <div className="transition-all duration-300 transform hover:scale-105">
+                      <span className="block text-[10px] text-gray-400 uppercase tracking-widest font-extrabold">Effective Rate</span>
+                      <span className="text-lg font-black text-black">₹{getCustomRate()}/min</span>
+                    </div>
+                    <div className="transition-all duration-300 transform hover:scale-105">
+                      <span className="block text-[10px] text-gray-400 uppercase tracking-widest font-extrabold">GST Invoice</span>
+                      <span className="text-lg font-black text-orange-500 animate-pulse">Included</span>
+                    </div>
+                    <div className="transition-all duration-300 transform hover:scale-105">
+                      <span className="block text-[10px] text-gray-400 uppercase tracking-widest font-extrabold">Estimated Cost</span>
+                      <span className="text-lg font-black text-black">₹{calculateCustomPrice().toLocaleString()}/mo</span>
+                    </div>
+                  </div>
                 </div>
-                <button 
-                  className="w-full py-2.5 rounded-xl mt-6 font-extrabold text-[10px] uppercase tracking-wider border border-gray-200 hover:border-black text-black transition-all bg-gray-50"
-                >
-                  Choose Starter
-                </button>
               </div>
             </ScrollReveal>
+          </div>
+        </section>
 
-            {/* Plan 2: Growth (Most Popular) */}
-            <ScrollReveal delay={200}>
-              <div 
-                onClick={() => setSelectedPlan('Growth')}
-                className={`rounded-2xl border bg-white p-6 sm:p-8 flex flex-col justify-between relative transition-all duration-500 shadow-md cursor-pointer ${
-                  selectedPlan === 'Growth' ? 'border-black ring-4 ring-black/10 scale-105' : 'border-[#FFB000] hover:scale-105'
-                }`}
-              >
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-black text-white font-black text-[9px] px-3 py-1 rounded-full uppercase tracking-wider animate-pulse">
-                  Most Popular
+        {/* Deploy Now / Footer CTA Block */}
+        <section className="py-20 bg-gradient-to-b from-gray-50 to-white border-t border-gray-100 text-center relative overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[#FFB000]/5 rounded-full filter blur-[100px] pointer-events-none" />
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 relative">
+            <ScrollReveal>
+              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-black">
+                Ready to Go Live in <br />
+                <span className="text-black border-b-4 border-[#FFB000] hover:border-black transition-all duration-500">
+                  under 10 minutes?
                 </span>
-                <div>
-                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#FFB000] block mb-2">Growth</span>
-                  <p className="text-3xl font-black text-black">₹8,800<span className="text-xs font-normal text-gray-500">/mo</span></p>
-                  <div className="w-full bg-gray-100 h-px my-4" />
-                  <ul className="space-y-3 text-[11px] text-gray-600 font-bold">
-                    <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-black" /> Rate: ₹11/min</li>
-                    <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-black" /> 800 included minutes</li>
-                    <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-black" /> 10 AI voice agents</li>
-                    <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-black" /> 3 Phone numbers</li>
-                    <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-black" /> 12 Concurrent calls</li>
-                  </ul>
-                </div>
-                <button 
-                  className="w-full py-2.5 rounded-xl mt-6 font-extrabold text-[10px] uppercase tracking-wider bg-[#FFB000] hover:bg-black hover:text-white text-black transition-all"
+              </h2>
+            </ScrollReveal>
+
+            <ScrollReveal delay={100}>
+              <p className="text-gray-500 max-w-xl mx-auto text-xs font-bold leading-relaxed">
+                Build your conversational assistant visually, verify behaviors inside the sandbox, provision Indian DIDs, and optimize campaign metrics.
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal delay={200}>
+              <div className="flex justify-center gap-4 pt-4">
+                <button
+                  onClick={() => setIsDemoModalOpen(true)}
+                  className="relative overflow-hidden px-8 py-3.5 rounded-xl bg-black text-white hover:bg-[#FFB000] hover:text-black font-extrabold text-xs uppercase tracking-wider hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-500 group/endbtn"
                 >
-                  Choose Growth
+                  <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-white/20 -left-1/4 group-hover/endbtn:animate-shine pointer-events-none" />
+                  <span>Start Free Trial</span>
+                </button>
+                <button
+                  onClick={handleCopyLink}
+                  className="px-8 py-3.5 rounded-xl bg-gray-50 border border-gray-200 text-black font-extrabold text-xs uppercase tracking-wider hover:bg-gray-100 hover:scale-105 active:scale-95 transition-all duration-300"
+                >
+                  {copiedText ? 'Copied Link!' : 'Share Platform'}
                 </button>
               </div>
             </ScrollReveal>
+          </div>
+        </section>
 
-            {/* Plan 3: Scale */}
-            <ScrollReveal delay={300}>
-              <div 
-                onClick={() => setSelectedPlan('Scale')}
-                className={`rounded-2xl border bg-white p-6 sm:p-8 flex flex-col justify-between relative transition-all duration-500 shadow-sm cursor-pointer ${
-                  selectedPlan === 'Scale' ? 'border-[#FFB000] ring-4 ring-[#FFB000]/20 scale-105' : 'border-gray-200 hover:border-black/30 hover:scale-[1.02]'
-                }`}
+        {/* Footer Details */}
+        <footer className="bg-white py-12 border-t border-gray-100 text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="flex items-center gap-2">
+              <span className="text-black font-black">Demo<span className="text-[#FFB000]">.io</span></span>
+              <span>· All Rights Reserved © 2026. Made for India-first businesses.</span>
+            </div>
+            <div className="flex gap-6">
+              <a href="#" className="hover:text-black transition-all duration-300 hover:translate-y-[-1px]">Privacy Policy</a>
+              <a href="#" className="hover:text-black transition-all duration-300 hover:translate-y-[-1px]">Terms of Service</a>
+              <a href="#" className="hover:text-black transition-all duration-300 hover:translate-y-[-1px]">TRAI Compliance Audit</a>
+              <a href="#" className="hover:text-black transition-all duration-300 hover:translate-y-[-1px]">DPDP Localization</a>
+            </div>
+          </div>
+        </footer>
+
+        {/* Booking Demo Dialog Modal */}
+        {isDemoModalOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
+            <div className="relative w-full max-w-md rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-2xl transition-all duration-500 scale-100 animate-scale-up">
+              <button
+                onClick={() => setIsDemoModalOpen(false)}
+                className="absolute top-4 right-4 text-gray-400 hover:text-black transition-colors"
               >
+                <X className="w-5 h-5" />
+              </button>
+
+              <h3 className="text-lg font-black text-black mb-1">Book Your Demo Agent</h3>
+              <p className="text-[11px] text-gray-400 mb-6 font-bold uppercase tracking-wider">Schedule a 15-minute live config session</p>
+
+              <form onSubmit={(e) => { e.preventDefault(); setIsDemoModalOpen(false); }} className="space-y-4">
                 <div>
-                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-gray-500 block mb-2">Scale</span>
-                  <p className="text-3xl font-black text-black">₹30,000<span className="text-xs font-normal text-gray-500">/mo</span></p>
-                  <div className="w-full bg-gray-100 h-px my-4" />
-                  <ul className="space-y-3 text-[11px] text-gray-600 font-bold">
-                    <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFB000]" /> Rate: ₹10/min</li>
-                    <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFB000]" /> 3,000 included minutes</li>
-                    <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFB000]" /> Unlimited AI agents</li>
-                    <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFB000]" /> 15 Phone numbers</li>
-                    <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFB000]" /> 40 Concurrent calls</li>
-                  </ul>
+                  <label className="text-[9px] uppercase tracking-wider text-gray-400 font-extrabold block mb-1">Company Name</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Acme FinTech India"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-xs text-black focus:outline-none focus:border-black font-semibold transition-all duration-300 focus:ring-2 focus:ring-[#FFB000]/20"
+                  />
                 </div>
-                <button 
-                  className="w-full py-2.5 rounded-xl mt-6 font-extrabold text-[10px] uppercase tracking-wider border border-gray-200 hover:border-black text-black transition-all bg-gray-50"
+
+                <div>
+                  <label className="text-[9px] uppercase tracking-wider text-gray-400 font-extrabold block mb-1">Work Email</label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="name@company.com"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-xs text-black focus:outline-none focus:border-black font-semibold transition-all duration-300 focus:ring-2 focus:ring-[#FFB000]/20"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-[9px] uppercase tracking-wider text-gray-400 font-extrabold block mb-1">Select Core Language</label>
+                  <select className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-xs text-black focus:outline-none focus:border-black font-semibold transition-all focus:ring-2 focus:ring-[#FFB000]/20">
+                    <option>Hinglish (Hindi + English)</option>
+                    <option>Hindi</option>
+                    <option>Tamil</option>
+                    <option>Telugu</option>
+                    <option>Kannada</option>
+                    <option>Bengali</option>
+                    <option>Multiple (Dialect Switching)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="text-[9px] uppercase tracking-wider text-gray-400 font-extrabold block mb-1">Estimated Monthly Minutes</label>
+                  <select className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-xs text-black focus:outline-none focus:border-black font-semibold transition-all focus:ring-2 focus:ring-[#FFB000]/20">
+                    <option>Under 1,000 mins/mo</option>
+                    <option>1,000 - 10,000 mins/mo</option>
+                    <option>10,000 - 50,000 mins/mo</option>
+                    <option>Over 50,000 mins/mo</option>
+                  </select>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full py-4.5 rounded-xl bg-black text-white hover:bg-[#FFB000] hover:text-black font-extrabold text-xs tracking-wider uppercase shadow-md transition-all duration-300 transform hover:scale-[1.01]"
                 >
-                  Choose Scale
+                  Schedule Setup Config
                 </button>
-              </div>
-            </ScrollReveal>
-
-          </div>
-
-          {/* Interactive Calculator Slider Block */}
-          <ScrollReveal delay={100}>
-            <div className="rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 max-w-3xl mx-auto shadow-sm hover:shadow-xl transition-all duration-500">
-              <h3 className="text-base font-extrabold text-black mb-1">Estimate Custom Monthly Volume</h3>
-              <p className="text-[10px] text-gray-400 mb-6 font-extrabold uppercase tracking-wider">Drag the slider to adjust expected calling minutes</p>
-              
-              <div className="space-y-6">
-                <div className="flex items-center justify-between text-sm font-extrabold">
-                  <span className="text-gray-500 uppercase tracking-wider text-xs">Total Calling Minutes</span>
-                  <span className="text-black text-sm bg-[#FFB000]/10 border border-[#FFB000]/30 px-3 py-1 rounded-md animate-pulse">{customMinutes.toLocaleString()} Min / mo</span>
-                </div>
-                
-                <input 
-                  type="range" 
-                  min="500" 
-                  max="20000" 
-                  step="500"
-                  value={customMinutes} 
-                  onChange={(e) => setCustomMinutes(Number(e.target.value))}
-                  className="w-full h-1.5 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-black transition-all"
-                />
-
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-gray-100 text-center">
-                  <div className="transition-all duration-300 transform hover:scale-105">
-                    <span className="block text-[10px] text-gray-400 uppercase tracking-widest font-extrabold">Effective Rate</span>
-                    <span className="text-lg font-black text-black">₹{getCustomRate()}/min</span>
-                  </div>
-                  <div className="transition-all duration-300 transform hover:scale-105">
-                    <span className="block text-[10px] text-gray-400 uppercase tracking-widest font-extrabold">GST Invoice</span>
-                    <span className="text-lg font-black text-orange-500 animate-pulse">Included</span>
-                  </div>
-                  <div className="transition-all duration-300 transform hover:scale-105">
-                    <span className="block text-[10px] text-gray-400 uppercase tracking-widest font-extrabold">Estimated Cost</span>
-                    <span className="text-lg font-black text-black">₹{calculateCustomPrice().toLocaleString()}/mo</span>
-                  </div>
-                </div>
-              </div>
+              </form>
             </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Deploy Now / Footer CTA Block */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white border-t border-gray-100 text-center relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[#FFB000]/5 rounded-full filter blur-[100px] pointer-events-none" />
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 relative">
-          <ScrollReveal>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-black">
-              Ready to Go Live in <br/>
-              <span className="text-black border-b-4 border-[#FFB000] hover:border-black transition-all duration-500">
-                under 10 minutes?
-              </span>
-            </h2>
-          </ScrollReveal>
-          
-          <ScrollReveal delay={100}>
-            <p className="text-gray-500 max-w-xl mx-auto text-xs font-bold leading-relaxed">
-              Build your conversational assistant visually, verify behaviors inside the sandbox, provision Indian DIDs, and optimize campaign metrics.
-            </p>
-          </ScrollReveal>
-
-          <ScrollReveal delay={200}>
-            <div className="flex justify-center gap-4 pt-4">
-              <button 
-                onClick={() => setIsDemoModalOpen(true)}
-                className="relative overflow-hidden px-8 py-3.5 rounded-xl bg-black text-white hover:bg-[#FFB000] hover:text-black font-extrabold text-xs uppercase tracking-wider hover:shadow-md hover:scale-105 active:scale-95 transition-all duration-500 group/endbtn"
-              >
-                <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-white/20 -left-1/4 group-hover/endbtn:animate-shine pointer-events-none" />
-                <span>Start Free Trial</span>
-              </button>
-              <button 
-                onClick={handleCopyLink}
-                className="px-8 py-3.5 rounded-xl bg-gray-50 border border-gray-200 text-black font-extrabold text-xs uppercase tracking-wider hover:bg-gray-100 hover:scale-105 active:scale-95 transition-all duration-300"
-              >
-                {copiedText ? 'Copied Link!' : 'Share Platform'}
-              </button>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Footer Details */}
-      <footer className="bg-white py-12 border-t border-gray-100 text-[10px] font-bold text-gray-400 uppercase tracking-wider">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-2">
-            <span className="text-black font-black">Demo<span className="text-[#FFB000]">.io</span></span>
-            <span>· All Rights Reserved © 2026. Made for India-first businesses.</span>
           </div>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-black transition-all duration-300 hover:translate-y-[-1px]">Privacy Policy</a>
-            <a href="#" className="hover:text-black transition-all duration-300 hover:translate-y-[-1px]">Terms of Service</a>
-            <a href="#" className="hover:text-black transition-all duration-300 hover:translate-y-[-1px]">TRAI Compliance Audit</a>
-            <a href="#" className="hover:text-black transition-all duration-300 hover:translate-y-[-1px]">DPDP Localization</a>
-          </div>
-        </div>
-      </footer>
+        )}
 
-      {/* Booking Demo Dialog Modal */}
-      {isDemoModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
-          <div className="relative w-full max-w-md rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-2xl transition-all duration-500 scale-100 animate-scale-up">
-            <button 
-              onClick={() => setIsDemoModalOpen(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-black transition-colors"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <h3 className="text-lg font-black text-black mb-1">Book Your Demo Agent</h3>
-            <p className="text-[11px] text-gray-400 mb-6 font-bold uppercase tracking-wider">Schedule a 15-minute live config session</p>
-
-            <form onSubmit={(e) => { e.preventDefault(); setIsDemoModalOpen(false); }} className="space-y-4">
-              <div>
-                <label className="text-[9px] uppercase tracking-wider text-gray-400 font-extrabold block mb-1">Company Name</label>
-                <input 
-                  type="text" 
-                  required 
-                  placeholder="e.g. Acme FinTech India" 
-                  className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-xs text-black focus:outline-none focus:border-black font-semibold transition-all duration-300 focus:ring-2 focus:ring-[#FFB000]/20" 
-                />
-              </div>
-
-              <div>
-                <label className="text-[9px] uppercase tracking-wider text-gray-400 font-extrabold block mb-1">Work Email</label>
-                <input 
-                  type="email" 
-                  required 
-                  placeholder="name@company.com" 
-                  className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-xs text-black focus:outline-none focus:border-black font-semibold transition-all duration-300 focus:ring-2 focus:ring-[#FFB000]/20" 
-                />
-              </div>
-
-              <div>
-                <label className="text-[9px] uppercase tracking-wider text-gray-400 font-extrabold block mb-1">Select Core Language</label>
-                <select className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-xs text-black focus:outline-none focus:border-black font-semibold transition-all focus:ring-2 focus:ring-[#FFB000]/20">
-                  <option>Hinglish (Hindi + English)</option>
-                  <option>Hindi</option>
-                  <option>Tamil</option>
-                  <option>Telugu</option>
-                  <option>Kannada</option>
-                  <option>Bengali</option>
-                  <option>Multiple (Dialect Switching)</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="text-[9px] uppercase tracking-wider text-gray-400 font-extrabold block mb-1">Estimated Monthly Minutes</label>
-                <select className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-xs text-black focus:outline-none focus:border-black font-semibold transition-all focus:ring-2 focus:ring-[#FFB000]/20">
-                  <option>Under 1,000 mins/mo</option>
-                  <option>1,000 - 10,000 mins/mo</option>
-                  <option>10,000 - 50,000 mins/mo</option>
-                  <option>Over 50,000 mins/mo</option>
-                </select>
-              </div>
-
-              <button 
-                type="submit" 
-                className="w-full py-4.5 rounded-xl bg-black text-white hover:bg-[#FFB000] hover:text-black font-extrabold text-xs tracking-wider uppercase shadow-md transition-all duration-300 transform hover:scale-[1.01]"
-              >
-                Schedule Setup Config
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
-
-    </div>
+      </div>
+    </>
   );
 }
