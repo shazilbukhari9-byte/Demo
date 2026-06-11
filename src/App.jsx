@@ -27,6 +27,9 @@ import {
 import ButtonSocialIconDemo from "@/components/ui/social-icon";
 import { Component } from './components/timeline-component';
 import { Logos3 } from "./components/logos3"
+import { Typewriter } from "@/components/ui/typewriter-text"
+import { Text_03 } from "@/components/ui/wave-text"
+import { TextEffect } from "@/components/ui/text-effect";
 
 
 const demoData = {
@@ -388,9 +391,12 @@ export default function App() {
 
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-none text-black">
                   AI Voice Agents That <br />
-                  <span className="bg-gradient-to-r from-black via-[#FFB000] to-black bg-clip-text text-transparent">
-                    Actually Sound Human
-                  </span>
+                  <Typewriter
+                    text={["Actually Sound Human"]}
+                    speed={100}
+                    loop={true}
+                    className="bg-gradient-to-r from-black via-[#FFB000] to-black bg-clip-text text-transparent"
+                  />
                 </h1>
 
                 <p className="text-gray-600 text-base max-w-xl leading-relaxed">
@@ -553,8 +559,8 @@ export default function App() {
                   <Cpu className="w-3.5 h-3.5 text-[#FFB000]" />
                   <span>Architectural Supremacy</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-black">
-                  Native Audio Engine, <span className="text-[#FFB000]">Not A Relay Glue</span>
+                <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-black" >
+                  Native Audio Engine, <span className="bg-gradient-to-r from-black via-[#FFB000] to-black bg-clip-text text-transparent">Not A Relay Glue</span>
                 </h2>
               </div>
             </ScrollReveal>
@@ -654,10 +660,10 @@ export default function App() {
               </ScrollReveal>
 
               {/* Box 2: Latency stats */}
-              <ScrollReveal delay={200}>
+              <ScrollReveal delay={100}>
                 <div className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 flex flex-col justify-between hover:border-black/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 group">
                   <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-black/[0.02] -left-1/4 group-hover:animate-shine pointer-events-none" />
-                  <div>
+                  <div className='w-full h-31'>
                     <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center mb-6">
                       <Clock className="w-5 h-5 text-black animate-spin-slow" />
                     </div>
@@ -677,10 +683,10 @@ export default function App() {
               </ScrollReveal>
 
               {/* Box 3: Outbound */}
-              <ScrollReveal delay={150}>
+              <ScrollReveal delay={100}>
                 <div className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 flex flex-col justify-between hover:border-black/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 group">
                   <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-black/[0.02] -left-1/4 group-hover:animate-shine pointer-events-none" />
-                  <div>
+                  <div className='w-full h-52'>
                     <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center mb-6 transition-transform duration-500 group-hover:rotate-12">
                       <TrendingUp className="w-5 h-5 text-black" />
                     </div>
@@ -777,7 +783,7 @@ export default function App() {
 
                   {/* Integration tags badge container */}
                   <div className="flex flex-wrap gap-1 ">
-                     <ButtonSocialIconDemo />
+                    <ButtonSocialIconDemo />
                   </div>
                 </div>
               </ScrollReveal>
@@ -787,7 +793,7 @@ export default function App() {
                 <div>
                   {/* Graphic Flow animation */}
                   <div className="space-y-4">
-                   <Component/>
+                    <Component />
                   </div>
                 </div>
               </ScrollReveal>
@@ -863,7 +869,7 @@ export default function App() {
                 >
                   <div>
                     <span className="text-[10px] font-extrabold uppercase tracking-widest text-gray-500 block mb-2">Starter</span>
-                    <p className="text-3xl font-black text-black">₹3,000<span className="text-xs font-normal text-gray-500">/mo</span></p>
+                    <p className="text-3xl font-black text-black">₹3,300<span className="text-xs font-normal text-gray-500">/mo</span></p>
                     <div className="w-full bg-gray-100 h-px my-4" />
                     <ul className="space-y-3 text-[11px] text-gray-600 font-bold">
                       <li className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-[#FFB000]" /> Rate: ₹12/min</li>
@@ -940,7 +946,7 @@ export default function App() {
 
             </div>
 
-           
+
 
             {/* Interactive Calculator Slider Block */}
             <ScrollReveal delay={100}>
@@ -989,10 +995,10 @@ export default function App() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[#FFB000]/5 rounded-full filter blur-[100px] pointer-events-none" />
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 relative">
             <ScrollReveal>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-black">
-                Ready to Go Live in <br />
+              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-black ">
+                Ready to Go Live in <br/>
                 <span className="text-black border-b-4 border-[#FFB000] hover:border-black transition-all duration-500">
-                  under 10 minutes?
+                   under 10 minutes?
                 </span>
               </h2>
             </ScrollReveal>
@@ -1001,6 +1007,7 @@ export default function App() {
               <p className="text-gray-500 max-w-xl mx-auto text-xs font-bold leading-relaxed">
                 Build your conversational assistant visually, verify behaviors inside the sandbox, provision Indian DIDs, and optimize campaign metrics.
               </p>
+              
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
