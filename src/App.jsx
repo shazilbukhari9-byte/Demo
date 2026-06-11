@@ -22,24 +22,72 @@ import {
   Lock,
   Headphones
 } from 'lucide-react';
+//21stdev import's
+
+import ButtonSocialIconDemo from "@/components/ui/social-icon";
+import { Component } from './components/timeline-component';
+import { Logos3 } from "./components/logos3"
 
 
-
-import tcs from '../src/assets/tcs.png';
-import hdfc from '../src/assets/hdfc.png';
-import infosys from '../src/assets/infosys.png';
-import bajaj from '../src/assets/bajaj.png';
-import swiggy from '../src/assets/swiggy.png';
-import makemytrip from '../src/assets/makemytrip.png';
-import phonepe from '../src/assets/phonepe.png';
-import policy from '../src/assets/policy.png';
-import nykaa from '../src/assets/nykaa.svg';
-
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-
-import "swiper/css";
-import '../src/styles.css'
+const demoData = {
+  heading: "Trusted by these companies",
+  logos: [
+    {
+      id: "logo-1",
+      description: "Swiggy",
+      image: "https://play-lh.googleusercontent.com/FJ5W5ygiN-DYfpd2-3LqyN5F-OxDtQ7z_9v5nAeD4vOrN8kQitoOwULactKgKvktXowVEM491wE-unmGmnt8OWM",
+      className: "h-13 w-auto",
+    },
+    {
+      id: "logo-2",
+      description: "Bajaj",
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Bajaj_Auto_Ltd_logo.svg/1280px-Bajaj_Auto_Ltd_logo.svg.png",
+      className: "h-13 w-auto",
+    },
+    {
+      id: "logo-3",
+      description: "hdfc",
+      image: "https://assets.upstox.com/content/assets/images/cms/2024419/HDFC-Bank-emblem.png",
+      className: "h-15 w-auto",
+    },
+    {
+      id: "logo-4",
+      description: "infosys",
+      image: "https://markettimes.in/wp-content/uploads/2025/08/infosys-logo.png.original.png ",
+      className: "h-15 w-auto",
+    },
+    {
+      id: "logo-5",
+      description: "makemytrip",
+      image: "https://play-lh.googleusercontent.com/19I7zjhAAAud9AztLiIxD1MYVdHusoeaW2-7Fx2FUJvcVZBbUBcGKjBBVPsHkFBLWMs",
+      className: "h-15 w-auto",
+    },
+    {
+      id: "logo-6",
+      description: "nykaa",
+      image: "https://thecapitalmall.com/wp-content/uploads/2023/10/nykaa-Capital-Mall.png",
+      className: "h-10 w-auto",
+    },
+    {
+      id: "logo-7",
+      description: "Phonepe",
+      image: "https://play-lh.googleusercontent.com/ARGoCZk-5QCKPpyTsGhn1WahhPbVMa95T1U7clwnI8gjtW-YNY96rAANqFkuENbU35IbYF2Gjg2UjZXA495x0A",
+      className: "h-12 w-auto",
+    },
+    {
+      id: "logo-8",
+      description: "Policy",
+      image: "https://yt3.googleusercontent.com/ytc/AIdro_nSJPRNZHyvKFJXAk_IlQ3HaNzs5n-cE28lgZR6nMkE8Q=s900-c-k-c0x00ffffff-no-rj",
+      className: "h-12 w-auto",
+    },
+    {
+      id: "logo-9",
+      description: "TCS",
+      image: "https://give.do/static/img/logos/19WJ/9aad65c4-4ada-437d-a056-cd099c1e88ef.png",
+      className: "h-10 w-auto",
+    },
+  ],
+};
 
 
 // Highly polished, authentic inline SVG vector approximations of the 12 specified brands
@@ -490,87 +538,8 @@ export default function App() {
             <p className="text-center text-[10px] font-black tracking-[0.25em] text-gray-400 uppercase mb-8">
               TRUSTED BY 500+ INDIAN ENTERPRISES & BPOS
             </p>
-            <div className="w-full py-4">
-              <Swiper
-                modules={[Autoplay]}
-                slidesPerView={5}
-                spaceBetween={40}
-                loop={true}
-                autoplay={{
-                  delay: 0,
-                  disableOnInteraction: false,
-                }}
-                speed={3000}
-                breakpoints={{
-                  320: {
-                    slidesPerView: 2,
-                  },
-                  640: {
-                    slidesPerView: 3,
-                  },
-                  768: {
-                    slidesPerView: 4,
-                  },
-                  1024: {
-                    slidesPerView: 5,
-                  },
-                }}
-                className="w-full"
-              >
-                <SwiperSlide>
-                  <div className="logo-box">
-                    <img src={tcs} alt="TCS" />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className="logo-box">
-                    <img src={hdfc} alt="HDFC"/>
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className="logo-box">
-                    <img src={infosys} alt="Infosys" />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className="logo-box">
-                    <img src={bajaj} alt="Bajaj" />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className="logo-box">
-                    <img src={swiggy} alt="Swiggy"  />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className="logo-box">
-                    <img src={phonepe} alt="PhonePe"/>
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className="logo-box">
-                    <img src={makemytrip} alt="MakeMyTrip"  />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className="logo-box">
-                    <img src={policy} alt="PolicyBazaar"  />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className="logo-box">
-                    <img src={nykaa} alt="Nykaa"  />
-                  </div>
-                </SwiperSlide>
-              </Swiper>
+            <div className="w-full py-4 ">
+              <Logos3 {...demoData} />;
             </div>
           </div>
         </section>
@@ -656,7 +625,7 @@ export default function App() {
                   <span>Sleek Capabilities</span>
                 </div>
                 <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-black">
-                  Everything Needed To <span className="text-[#FFB000]">Dominate Voice Calls</span>
+                  Everything Needed To <span className="bg-gradient-to-r from-black via-[#FFB000] to-black bg-clip-text text-transparent">Dominate Voice Calls</span>
                 </h2>
               </div>
             </ScrollReveal>
@@ -731,7 +700,7 @@ export default function App() {
               <div className="text-center max-w-xl mx-auto mb-12">
                 <span className="text-[10px] font-black text-[#FFB000] tracking-widest uppercase">Target Use Cases</span>
                 <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mt-2 text-black">
-                  Built For <span className="text-black border-b-4 border-[#FFB000]">Your Industry</span>
+                  Built For <span className="bg-gradient-to-r from-black via-[#FFB000] to-black bg-clip-text text-transparent"><u>Your Industry</u></span>
                 </h2>
               </div>
             </ScrollReveal>
@@ -799,65 +768,26 @@ export default function App() {
                 <div className="space-y-6">
                   <span className="text-[10px] font-extrabold text-black tracking-widest uppercase">Ecosystem Synchronization</span>
                   <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-black">
-                    200+ Integrations With <span className="text-[#FFB000]">Tools You Already Use</span>
+                    200+ Integrations With <span className="bg-gradient-to-r from-black via-[#FFB000] to-black bg-clip-text text-transparent">Tools You Already Use</span>
                   </h2>
+
                   <p className="text-gray-500 text-xs font-bold leading-relaxed">
                     Seamlessly trigger calls from your CRM, pull consumer details, record customer interactions, and update pipeline databases instantly.
                   </p>
 
                   {/* Integration tags badge container */}
-                  <div className="flex flex-wrap gap-2">
-                    {['Zoho CRM', 'Freshworks', 'LeadSquared', 'WhatsApp Business', 'Razorpay', 'Tally Prime', 'Salesforce', 'Zapier', 'HubSpot'].map((tool, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3.5 py-1.5 rounded-full bg-white border border-gray-200 text-[10px] font-bold uppercase tracking-wider text-gray-600 shadow-sm transition-all duration-300 hover:scale-110 hover:border-[#FFB000] hover:text-black hover:shadow-md cursor-default"
-                      >
-                        {tool}
-                      </span>
-                    ))}
+                  <div className="flex flex-wrap gap-1 ">
+                     <ButtonSocialIconDemo />
                   </div>
                 </div>
               </ScrollReveal>
 
               {/* Graphic Showcase Container */}
               <ScrollReveal delay={200}>
-                <div className="relative rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-500 group">
-                  <span className="absolute inset-0 w-1/2 h-full transform -skew-x-12 bg-black/[0.01] -left-1/4 group-hover:animate-shine pointer-events-none" />
-                  <div className="flex items-center justify-between pb-4 border-b border-gray-100 mb-6">
-                    <span className="text-[10px] font-extrabold text-gray-400 uppercase tracking-widest">Pipeline Synchronization</span>
-                    <span className="text-[9px] text-green-600 font-black tracking-widest uppercase animate-pulse">Online</span>
-                  </div>
-
+                <div>
                   {/* Graphic Flow animation */}
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between p-3 rounded-xl bg-gray-50 border border-gray-200 transition-transform duration-300 hover:translate-x-1.5">
-                      <div className="flex items-center gap-2.5">
-                        <Database className="w-4 h-4 text-black animate-pulse" />
-                        <span className="text-[11px] font-bold text-black">Incoming Call Registered</span>
-                      </div>
-                    </div>
-
-                    <div className="h-4 flex justify-center items-center">
-                      <div className="w-0.5 h-full bg-black/40 animate-pulse" />
-                    </div>
-
-                    <div className="flex items-center justify-between p-3 rounded-xl bg-gray-50 border border-green-200 transition-transform duration-300 hover:translate-x-1.5">
-                      <div className="flex items-center gap-2.5">
-                        <Sliders className="w-4 h-4 text-green-600" />
-                        <span className="text-[11px] font-bold text-black">Lead Created in Zoho CRM</span>
-                      </div>
-                    </div>
-
-                    <div className="h-4 flex justify-center items-center">
-                      <div className="w-0.5 h-full bg-green-400/40 animate-pulse" />
-                    </div>
-
-                    <div className="flex items-center justify-between p-3 rounded-xl bg-gray-50 border border-green-200 transition-transform duration-300 hover:translate-x-1.5">
-                      <div className="flex items-center gap-2.5">
-                        <MessageSquare className="w-4 h-4 text-green-600 animate-bounce" />
-                        <span className="text-[11px] font-bold text-black">Invoice Sent Over WhatsApp</span>
-                      </div>
-                    </div>
+                   <Component/>
                   </div>
                 </div>
               </ScrollReveal>
@@ -872,7 +802,7 @@ export default function App() {
               <div className="text-center max-w-xl mx-auto mb-12">
                 <span className="text-[10px] font-black text-[#FFB000] tracking-widest uppercase">Competitive Specs</span>
                 <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mt-2 text-black">
-                  Why Indian Teams <span className="text-[#FFB000]">Select Demo</span>
+                  Why Indian Teams <span className="bg-gradient-to-r from-black via-[#FFB000] to-black bg-clip-text text-transparent">Select Demo</span>
                 </h2>
               </div>
             </ScrollReveal>
@@ -916,7 +846,7 @@ export default function App() {
               <div className="text-center max-w-xl mx-auto mb-16">
                 <span className="text-[10px] font-black text-black tracking-widest uppercase">Transparent Pricing</span>
                 <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mt-2 text-black">
-                  No Contracts, <span className="text-[#FFB000]">GST Invoice Included</span>
+                  No Contracts, <span className="bg-gradient-to-r from-black via-[#FFB000] to-black bg-clip-text text-transparent">GST Invoice Included</span>
                 </h2>
               </div>
             </ScrollReveal>
@@ -1009,6 +939,8 @@ export default function App() {
               </ScrollReveal>
 
             </div>
+
+           
 
             {/* Interactive Calculator Slider Block */}
             <ScrollReveal delay={100}>
