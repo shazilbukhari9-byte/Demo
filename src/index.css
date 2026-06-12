@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "@fontsource-variable/geist";
 
+
 @theme inline {
   @keyframes fade-in {
   from {
@@ -12,4 +13,61 @@
     transform: translateY(0);
     }
   }
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-sidebar-ring: var(----sidebar-ring);
+  --color-sidebar-border: var(----sidebar-border);
+  --color-ring: var(----ring);
+  --color-input: var(----input);
+  --color-border: var(----border);
+  --color-destructive: var(----destructive);
+  --color-primary: var(----primary);
+  --color-popover: var(----popover);
+  --color-card: var(----card);
+  --radius: var(----radius)
+;
+  @keyframes box1 {
+  0%,
+    50% {
+    transform: translate(100%, 0);
+    }
+  100% {
+    transform: translate(200%, 0);
+    }
+  }
+  @keyframes box2 {
+  0% {
+    transform: translate(0, 100%);
+    }
+  50% {
+    transform: translate(0, 0);
+    }
+  100% {
+    transform: translate(100%, 0);
+    }
+  }
+  @keyframes box3 {
+  0%,
+    50% {
+    transform: translate(100%, 100%);
+    }
+  100% {
+    transform: translate(0, 100%);
+    }
+  }
+  @keyframes box4 {
+  0% {
+    transform: translate(200%, 0);
+    }
+  50% {
+    transform: translate(200%, 100%);
+    }
+  100% {
+    transform: translate(100%, 100%);
+    }
+  }}
+
+:root { --destructive-foreground: oklch(0.577 0.245 27.325); --radius: 0.625 rem;
+}
+
+.dark { --card: oklch(0.145 0 0); --popover: oklch(0.145 0 0); --primary: oklch(0.985 0 0); --destructive: oklch(0.396 0.141 25.723); --destructive-foreground: oklch(0.637 0.237 25.331); --border: oklch(0.269 0 0); --input: oklch(0.269 0 0); --ring: oklch(0.439 0 0); --sidebar-border: oklch(0.269 0 0); --sidebar-ring: oklch(0.439 0 0);
 }
