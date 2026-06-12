@@ -10,7 +10,7 @@ import Integration from './components/Integration';
 import Comparision from './components/Comparision';
 import Pricing from './components/Pricing';
 import Footer from './components/Footer';
-import Footerd from './components/footerd';
+import Footerd from './components/Footerd';
 
 
 export default function App() {
